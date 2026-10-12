@@ -1,9 +1,10 @@
 Package: queRemosapRobar
-Title: What the Package Does (One Line, Title Case)
+Title: Herramientas de Lectura, Análisis y Manipulación de Datos Meteorológicos
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+   c(person("Manuela", "Bulgubure", "mbulgubure@mail.austral.edu.ar", role = c("aut", "cre")),
+   person("Paulina", "Guerscovich", "pguerscovich@mail.austral.edu.ar", role = c("aut")))
+Description: Un paquete desarrollado con fines académicos para la lectura, estructuración, limpieza y análisis estadístico de datos provenientes de estaciones meteorológicas.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Config/roxygen2/version: 8.1.1
