@@ -7,7 +7,7 @@
 #' @param titulo Será el título del gráfico (cadena de caracteres).
 #' Por default es "Temperatura"
 #'
-#' @returns Un gráfico hecho con ggplot con la línea de evolución mensual por estación
+#' @return Un gráfico hecho con ggplot con la línea de evolución mensual por estación
 #' @export
 #'
 #' @examples

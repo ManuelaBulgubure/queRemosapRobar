@@ -4,7 +4,7 @@
 #'
 #' @param datos Un dataframe que contenga al menos las columnas "id" g "temperatura_abrigo_150cm"
 #'
-#' @returns Un dataframe (resumen) con una fila por estación (identificada por su ID)
+#' @return Un dataframe (resumen) con una fila por estación (identificada por su ID)
 #' y las siguientes columnas calculadas:
 #'  \item{id}{Identificador de la estación}
 #'  \item{temp_promedio}{Temperatura promedio (°C)}
