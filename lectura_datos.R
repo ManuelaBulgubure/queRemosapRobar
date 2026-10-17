@@ -7,7 +7,7 @@
 #' @param ruta cadena de texto con la ruta local (incluyendo el nombre del archivo)
 #' donde se desea leer/instalar el CSV
 #'
-#' @returns Un \code{\link[readr]{read_csv}} data frame (\code{tbl_df}) con los datos de la estación.
+#' @returns Un dataframe con los datos de la estación indicada.
 #' @export
 #'
 #' @examples
