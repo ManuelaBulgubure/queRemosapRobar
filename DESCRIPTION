@@ -12,3 +12,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/ManuelaBulgubure/queRemosapRobar
 BugReports: https://github.com/ManuelaBulgubure/queRemosapRobar/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
