@@ -1,18 +1,79 @@
 # queRemosaprobar
 
-Este paquete es un trabajo práctico de prueba desarrollado con fines académicos. **No está pensado para ser utilizado como un paquete real ni para análisis meteorológicos de producción.**
+El objetivo principal del paquete `queRemosaprobar` es proporcionar un conjunto robusto y estructurado de herramientas en R para la lectura, el procesamiento, el análisis estadístico y la visualización de datos meteorológicos provenientes de diversas estaciones de medición.
 
-<!-- badges: start -->
-<!-- badges: end -->
+Este paquete fue desarrollado con fines académicos en el marco de la asignatura Programación II, aplicando buenas prácticas de desarrollo de software en R (documentación con Roxygen2, viñetas y control de versiones con Git/GitHub).
 
-## Descripción
-
-El objetivo de `queRemosaprobar` es crear la estructura de un paquete colaborativo en R para la lectura, procesamiento y análisis de datos provenientes de estaciones meteorológicas.
+---
 
 ## Instalación
 
-Podés instalar la versión en desarrollo de `queRemosaprobar` desde GitHub usando:
+Podés instalar la versión en desarrollo de `queRemosaprobar` directamente desde GitHub ejecutando las siguientes líneas en tu consola de R:
 
-```r
-# install.packages("pak")
-pak::pak("ManuelaBulgubure/queRemosaprobar")
+Con el paquete `pak`:
+
+    install.packages("pak")
+    pak::pak("ManuelaBulgubure/queRemosaprobar")
+
+O utilizando `devtools`:
+
+    install.packages("devtools")
+    devtools::install_github("ManuelaBulgubure/queRemosaprobar")
+
+---
+
+## Flujo de Trabajo y Funciones Principales
+
+El paquete cuenta con un flujo de trabajo integrado diseñado para acompañarte desde la importación inicial de los datos climáticos hasta la generación de gráficos analíticos detallados.
+
+Para comenzar a utilizar las funciones, primero cargamos la librería:
+
+    library(queRemosaprobar)
+
+### 1. Lectura e Importación de Datos (`lectura_datos`)
+
+La función `lectura_datos()` permite descargar e importar de forma automatizada un archivo CSV con mediciones climáticas a partir del identificador de la estación. Si el archivo ya se encuentra disponible en tu entorno local, lo lee directamente desde el disco:
+
+    # Ejemplo de importación para la estación "nh0437"
+    datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+
+    # Inspección preliminar de los datos cargados
+    head(datos_clima)
+
+### 2. Resumen Estadístico de Temperatura (`tabla_resumen_temperatura`)
+
+Utilizando la función `tabla_resumen_temperatura()`, es posible obtener una tabla estructurada y agrupada por estación (`id`) que calcula automáticamente la temperatura promedio, mínima y máxima a 150 cm de altura:
+
+    # Cálculo de la tabla resumen estadística
+    resumen_temp <- tabla_resumen_temperatura(datos_clima)
+
+    # Mostrar el resultado en consola
+    resumen_temp
+
+### 3. Visualización de la Evolución Mensual (`grafico_temperatura_mensual`)
+
+Para analizar el comportamiento temporal y las tendencias de la temperatura a lo largo del año, utilizamos `grafico_temperatura_mensual()`. Esta función genera una visualización gráfica clara y estéticamente cuidada construida sobre `ggplot2`:
+
+    # Generación del gráfico mensual para la estación
+    grafico_temperatura_mensual(data_frame = datos_clima, titulo = "Evolución Mensual de Temperatura - Estación NH0437")
+
+---
+
+## Viñeta de Introducción
+
+Si querés profundizar en los conceptos, ver más ejemplos prácticos y entender en detalle la arquitectura del paquete, podés consultar la viñeta interactiva integrada ejecutando el siguiente comando en tu consola de R:
+
+    vignette("vineta_queRemosaprobar", package = "queRemosaprobar")
+
+---
+
+## Autores y Contribuciones
+
+Este proyecto fue desarrollado de forma colaborativa por estudiantes de la cátedra de Programación II:
+
+* **Manuela Bulgubure**
+* **Paulina Guerscovich** 
+
+---
+
+
