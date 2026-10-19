@@ -1,9 +1,10 @@
 Package: queRemosapRobar
 Title: Herramientas de Lectura, Análisis y Manipulación de Datos Meteorológicos
 Version: 0.0.0.9000
-Authors@R: 
-   c(person("Manuela", "Bulgubure", "mbulgubure@mail.austral.edu.ar", role = c("aut", "cre")),
-   person("Paulina", "Guerscovich", "pguerscovich@mail.austral.edu.ar", role = c("aut")))
+Authors@R: c(
+    person("Manuela", "Bulgubure", email = "mbulgubure@mail.austral.edu.ar", role = c("aut", "cre")),
+    person("Paulina", "Guerscovich", email = "pguerscovich@mail.austral.edu.ar", role = "aut")
+  )
 Description: Un paquete desarrollado con fines académicos para la lectura, estructuración, limpieza y análisis estadístico de datos provenientes de estaciones meteorológicas.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
