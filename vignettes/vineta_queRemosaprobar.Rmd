@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, include = FALSE}
 library(queRemosapRobar)
 library(dplyr)
 library(ggplot2)
