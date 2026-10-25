@@ -1,113 +1,148 @@
-# queRemosaprobar
 
-El objetivo principal del paquete `queRemosaprobar` es proporcionar un conjunto robusto y estructurado de herramientas en R para la lectura, el procesamiento, el análisis estadístico y la visualización de datos meteorológicos provenientes de diversas estaciones de medición.
+# queRemosapRobar
 
-Este paquete fue desarrollado con fines académicos en el marco de la asignatura Programación II, aplicando buenas prácticas de desarrollo de software en R (documentación con Roxygen2, viñetas y control de versiones con Git/GitHub).
+El objetivo principal del paquete **queRemosapRobar** es proporcionar un
+conjunto robusto y estructurado de herramientas en R para la lectura, el
+procesamiento, el análisis estadístico y la visualización de datos
+meteorológicos provenientes de diversas estaciones de medición.
 
----
+Este paquete fue desarrollado con fines académicos en el marco de la
+asignatura **Programación II**, aplicando buenas prácticas de desarrollo
+de software en R (documentación con Roxygen2, viñetas y control de
+versiones con Git/GitHub).
 
 ## Instalación
 
-Podés instalar la versión en desarrollo de `queRemosaprobar` directamente desde GitHub ejecutando las siguientes líneas en tu consola de R:
+Podés instalar la versión en desarrollo de **queRemosapRobar**
+directamente desde GitHub ejecutando las siguientes líneas en tu consola
+de R:
 
 Con el paquete `pak`:
 
-    install.packages("pak")
-    pak::pak("ManuelaBulgubure/queRemosaprobar")
+``` r
+install.packages("pak")
+pak::pak("ManuelaBulgubure/queRemosapRobar")
+```
 
 O utilizando `devtools`:
 
-    install.packages("devtools")
-    devtools::install_github("ManuelaBulgubure/queRemosaprobar")
+``` r
+install.packages("devtools")
+devtools::install_github("ManuelaBulgubure/queRemosapRobar")
+```
 
----
+## Flujo de trabajo y funciones principales
 
-## Flujo de Trabajo y Funciones Principales
-
-El paquete cuenta con un flujo de trabajo integrado diseñado para acompañarte desde la importación inicial de los datos climáticos hasta la generación de gráficos analíticos detallados.
+El paquete cuenta con un flujo de trabajo integrado diseñado para
+acompañarte desde la importación inicial de los datos climáticos hasta
+la generación de gráficos analíticos detallados.
 
 Para comenzar a utilizar las funciones, primero cargamos la librería:
 
-    library(queRemosaprobar)
+``` r
+library(queRemosapRobar)
+```
 
-### 1. Lectura e Importación de Datos (`lectura_datos`)
+### 1. Lectura e importación de datos (`lectura_datos`)
 
-La función `lectura_datos()` permite descargar e importar de forma automatizada un archivo CSV con mediciones climáticas a partir del identificador de la estación. Si el archivo ya se encuentra disponible en tu entorno local, lo lee directamente desde el disco:
+La función `lectura_datos()` permite descargar e importar de forma
+automatizada un archivo CSV con mediciones climáticas a partir del
+identificador de la estación. Si el archivo ya se encuentra disponible
+en tu entorno local, lo lee directamente desde el disco:
 
-    # Ejemplo de importación para la estación "nh0437"
-    datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+``` r
+# Ejemplo de importación para la estación "nh0437"
+datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
 
-    # Inspección preliminar de los datos cargados
-    head(datos_clima)
-    
-### 2. Conteo de observaciones de temperatura por estación (`conteo_obs_temp()`)
+# Inspección preliminar de los datos cargados
+head(datos_clima)
+```
 
-Se recomienda utilizar la función `conteo_obs_temp()` para contabilizar los registros válidos de distintas temperaturas agrupadas por estación:
+### 2. Conteo de observaciones de temperatura por estación (`conteo_obs_temp`)
 
-    # Realizar el conteo de observaciones no nulas
-    conteo_obs <- conteo_obs_temp(datos_clima)
-    
-    # Mostrar el resultado en consola
-    conteo_obs
+Se recomienda utilizar la función `conteo_obs_temp()` para contabilizar
+los registros válidos de distintas temperaturas agrupadas por estación:
 
+``` r
+# Realizar el conteo de observaciones no nulas
+conteo_obs <- conteo_obs_temp(datos_clima)
 
-### 3. Resumen Estadístico de Temperatura (`tabla_resumen_temperatura`)
+# Mostrar el resultado en consola
+conteo_obs
+```
 
-Utilizando la función `tabla_resumen_temperatura()`, es posible obtener una tabla estructurada y agrupada por estación (`id`) que calcula automáticamente la temperatura promedio, mínima y máxima a 150 cm de altura:
+### 3. Resumen estadístico de temperatura (`tabla_resumen_temperatura`)
 
-    # Cálculo de la tabla resumen estadística
-    resumen_temp <- tabla_resumen_temperatura(datos_clima)
+Utilizando la función `tabla_resumen_temperatura()`, es posible obtener
+una tabla estructurada y agrupada por estación (`id`) que calcula
+automáticamente la temperatura promedio, mínima y máxima a 150 cm de
+altura:
 
-    # Mostrar el resultado en consola
-    resumen_temp
-    
+``` r
+# Cálculo de la tabla resumen estadística
+resumen_temp <- tabla_resumen_temperatura(datos_clima)
+
+# Mostrar el resultado en consola
+resumen_temp
+```
+
 ### 4. Extremos de temperatura por estación (`extremos_temperatura_estacion`)
 
-Se utiliza `extremos_temperatura_estacion()` para calcular de forma rápida los valores mínimos y máximos 
-a cada altura/profundidad registrados en cada estación.
+Se utiliza `extremos_temperatura_estacion()` para calcular de forma
+rápida los valores mínimos y máximos a cada altura/profundidad
+registrados en cada estación.
 
-    # Cálculo de valores mínimos y máximos
-    resumen_extremos <- extremos_temperatura_estacion(datos_clima)
+``` r
+# Cálculo de valores mínimos y máximos
+resumen_extremos <- extremos_temperatura_estacion(datos_clima)
 
-    # Mostrar el resultado en consola
-    resumen_extremos
-    
+# Mostrar el resultado en consola
+resumen_extremos
+```
+
 ### 5. Temperatura promedio anual por estación (`temperatura_promedio_anual`)
 
-La función `temperatura_promedio_anual()` devuelve una tabla que contiene la estación, el año de registro
-y la temperatura promedio de abrigo a 150 cm correspondiente.
+La función `temperatura_promedio_anual()` devuelve una tabla que
+contiene la estación, el año de registro y la temperatura promedio de
+abrigo a 150 cm correspondiente.
 
-    # Cálculo de temperatura promedio según estación y año
-    temp_promedio <- temperatura_promedio_anual(datos_clima)
+``` r
+# Cálculo de temperatura promedio según estación y año
+temp_promedio <- temperatura_promedio_anual(datos_clima)
 
-    # Mostrar el resultado en consola
-    temp_promedio
+# Mostrar el resultado en consola
+temp_promedio
+```
 
+### 6. Visualización de la evolución mensual (`grafico_temperatura_mensual`)
 
-### 6. Visualización de la Evolución Mensual (`grafico_temperatura_mensual`)
+Para analizar el comportamiento temporal y las tendencias de la
+temperatura a lo largo del año, utilizamos
+`grafico_temperatura_mensual()`. Esta función genera una visualización
+gráfica clara y estéticamente cuidada construida sobre `ggplot2`:
 
-Para analizar el comportamiento temporal y las tendencias de la temperatura a lo largo del año, utilizamos `grafico_temperatura_mensual()`. Esta función genera una visualización gráfica clara y estéticamente cuidada construida sobre `ggplot2`:
+``` r
+# Generación del gráfico mensual para la estación
+grafico_temperatura_mensual(
+  data_frame = datos_clima,
+  titulo = "Evolución Mensual de Temperatura - Estación NH0437"
+)
+```
 
-    # Generación del gráfico mensual para la estación
-    grafico_temperatura_mensual(data_frame = datos_clima, titulo = "Evolución Mensual de Temperatura - Estación NH0437")
+## Viñeta de introducción
 
----
+Si querés profundizar en los conceptos, ver más ejemplos prácticos y
+entender en detalle la arquitectura del paquete, podés consultar la
+viñeta integrada ejecutando el siguiente comando en tu consola de R:
 
-## Viñeta de Introducción
+``` r
+vignette("vineta_queRemosapRobar", package = "queRemosapRobar")
+```
 
-Si querés profundizar en los conceptos, ver más ejemplos prácticos y entender en detalle la arquitectura del paquete, podés consultar la viñeta interactiva integrada ejecutando el siguiente comando en tu consola de R:
+## Autores y contribuciones
 
-    vignette("vineta_queRemosaprobar", package = "queRemosaprobar")
+Este proyecto fue desarrollado de forma colaborativa por estudiantes de
+la cátedra de Programación II:
 
----
-
-## Autores y Contribuciones
-
-Este proyecto fue desarrollado de forma colaborativa por estudiantes de la cátedra de Programación II:
-
-* **Manuela Bulgubure**
-* **Paulina Guerscovich** 
-
----
-
-
+- Manuela Bulgubure
+- Paulina Guerscovich
