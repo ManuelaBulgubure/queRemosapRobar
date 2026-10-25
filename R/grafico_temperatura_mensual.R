@@ -1,19 +1,19 @@
-#' Graficar la temperatura promedio mensual por estación
+#' Graficar la temperatura promedio mensual por estacion
 #'
 #' @param data_frame Un dataframe con al menos las columnas "fecha",
 #' "id" y "temperatura_abrigo_150cm".
-#' @param colores vector (opcional) de caracteres con colores para cada estación.
+#' @param colores vector (opcional) de caracteres con colores para cada estacion.
 #' Si no se especifican suficientes colores, se eligen de forma aleatoria.
-#' @param titulo Será el título del gráfico (cadena de caracteres).
+#' @param titulo Sera el titulo del grafico (cadena de caracteres).
 #' Por default es "Temperatura"
 #'
-#' @return Un gráfico hecho con ggplot con la línea de evolución mensual por estación
+#' @return Un grafico hecho con ggplot con la linea de evolucion mensual por estacion
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'   datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
-#'   grafico_temperatura_mensual(datos_clima, titulo = "Evolución Mensual NH0437")
+#'   grafico_temperatura_mensual(datos_clima, titulo = "Evolucion Mensual NH0437")
 #' }
 
 grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Temperatura") {
@@ -36,13 +36,13 @@ grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Te
   ggplot2::ggplot(
     data = promedio_temp,
     mapping = ggplot2::aes(x = mes, y = prom_temp, color = as.character(id))) +
-    #el as.character(id) le indica a ggplot2 que id es una categoría y no una medición numérica. Permite que scale_color_manual(values = colores) asigne un color individual y distinto a cada estación.
+    #el as.character(id) le indica a ggplot2 que id es una categoría y no una medicion numerica. Permite que scale_color_manual(values = colores) asigne un color individual y distinto a cada estacion.
     ggplot2::geom_line() +
     ggplot2::scale_color_manual(values = colores) +
     ggplot2::labs(
       title = titulo,
       x = "Mes",
-      y = "Promedio temperatura (°C)",
-      color = "Estación"
+      y = "Promedio temperatura (grados C)",
+      color = "Estacion"
     )
 }
