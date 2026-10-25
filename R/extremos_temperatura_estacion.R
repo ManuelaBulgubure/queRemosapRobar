@@ -24,9 +24,9 @@
 #'   print(extremos)
 #' }
 
-extremos_temp_estacion <- function(datos) {
+extremos_temperatura_estacion <- function(datos) {
   resumen_extremos <- datos |>
-    dplyr::group_by(id) |>_tem
+    dplyr::group_by(id) |>
     dplyr::summarise(
       temp_minima_150cm = min(temperatura_abrigo_150cm_minima, na.rm = TRUE),
       temp_maxima_150cm = max(temperatura_abrigo_150cm_maxima, na.rm = TRUE),
