@@ -39,8 +39,19 @@ La función `lectura_datos()` permite descargar e importar de forma automatizada
 
     # Inspección preliminar de los datos cargados
     head(datos_clima)
+    
+### 2. Conteo de observaciones de temperatura por estación (`conteo_obs_temp()`)
 
-### 2. Resumen Estadístico de Temperatura (`tabla_resumen_temperatura`)
+Se recomienda utilizar la función `conteo_obs_temp()` para contabilizar los registros válidos de distintas temperaturas agrupadas por estación:
+
+    # Realizar el conteo de observaciones no nulas
+    conteo_obs <- conteo_obs_temp(datos_clima)
+    
+    # Mostrar el resultado en consola
+    conteo_obs
+
+
+### 3. Resumen Estadístico de Temperatura (`tabla_resumen_temperatura`)
 
 Utilizando la función `tabla_resumen_temperatura()`, es posible obtener una tabla estructurada y agrupada por estación (`id`) que calcula automáticamente la temperatura promedio, mínima y máxima a 150 cm de altura:
 
@@ -49,8 +60,31 @@ Utilizando la función `tabla_resumen_temperatura()`, es posible obtener una tab
 
     # Mostrar el resultado en consola
     resumen_temp
+    
+### 4. Extremos de temperatura por estación (`extremos_temperatura_estacion`)
 
-### 3. Visualización de la Evolución Mensual (`grafico_temperatura_mensual`)
+Se utiliza `extremos_temperatura_estacion()` para calcular de forma rápida los valores mínimos y máximos 
+a cada altura/profundidad registrados en cada estación.
+
+    # Cálculo de valores mínimos y máximos
+    resumen_extremos <- extremos_temperatura_estacion(datos_clima)
+
+    # Mostrar el resultado en consola
+    resumen_extremos
+    
+### 5. Temperatura promedio anual por estación (`temperatura_promedio_anual`)
+
+La función `temperatura_promedio_anual()` devuelve una tabla que contiene la estación, el año de registro
+y la temperatura promedio de abrigo a 150 cm correspondiente.
+
+    # Cálculo de temperatura promedio según estación y año
+    temp_promedio <- temperatura_promedio_anual(datos_clima)
+
+    # Mostrar el resultado en consola
+    temp_promedio
+
+
+### 6. Visualización de la Evolución Mensual (`grafico_temperatura_mensual`)
 
 Para analizar el comportamiento temporal y las tendencias de la temperatura a lo largo del año, utilizamos `grafico_temperatura_mensual()`. Esta función genera una visualización gráfica clara y estéticamente cuidada construida sobre `ggplot2`:
 
