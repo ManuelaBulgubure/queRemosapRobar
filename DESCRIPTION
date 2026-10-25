@@ -6,8 +6,7 @@ Authors@R: c(
     person("Paulina", "Guerscovich", email = "pguerscovich@mail.austral.edu.ar", role = "aut")
   )
 Description: Un paquete desarrollado con fines académicos para la lectura, estructuración, limpieza y análisis estadístico de datos provenientes de estaciones meteorológicas.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Config/roxygen2/version: 8.1.1
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
