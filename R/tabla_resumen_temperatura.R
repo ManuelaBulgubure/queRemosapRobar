@@ -22,8 +22,8 @@
 
 tabla_resumen_temperatura <- function(datos){
   resumen <- datos |>
-    group_by(id) |>
-    summarise(
+    dplyr::group_by(id) |>
+    dplyr::summarise(
       temp_promedio = mean(temperatura_abrigo_150cm, na.rm = TRUE),
       temp_minima = min(temperatura_abrigo_150cm, na.rm = TRUE),
       temp_maxima = max(temperatura_abrigo_150cm, na.rm = TRUE)

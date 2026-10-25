@@ -19,24 +19,24 @@
 grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Temperatura") {
 
   promedio_temp <- data_frame |>
-    mutate(mes = month(fecha)) |>
-    group_by(id, mes) |>
-    summarise(
+    dplyr::mutate(mes = lubridate::month(fecha)) |>
+    dplyr::group_by(id, mes) |>
+    dplyr::summarise(
       prom_temp = mean(temperatura_abrigo_150cm, na.rm = TRUE),
       .groups = "drop"
     )
 
   # Si no se pasan colores (o faltan), se eligen aleatoriamente de colors()
-  n_id <- n_distinct(promedio_temp$id)
+  n_id <- dplyr::n_distinct(promedio_temp$id)
   if (is.null(colores) || length(colores) < n_id) {
     colores <- sample(colors(), n_id)
   }
 
-  ggplot(data = promedio_temp, mapping = aes(x = mes, y = prom_temp, color = as.character(id))) +
+  ggplot2::ggplot(data = promedio_temp, mapping = ggplot2::aes(x = mes, y = prom_temp, color = as.character(id))) +
     #el as.character(id) le indica a ggplot2 que id es una categoría y no una medición numérica. Permite que scale_color_manual(values = colores) asigne un color individual y distinto a cada estación.
-    geom_line() +
-    scale_color_manual(values = colores) +
-    labs(
+    ggplot2::geom_line() +
+    ggplot2::scale_color_manual(values = colores) +
+    ggplot2::labs(
       title = titulo,
       x = "Mes",
       y = "Promedio temperatura (°C)",
