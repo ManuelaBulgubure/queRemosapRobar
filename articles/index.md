@@ -2,5 +2,5 @@
 
 ### All vignettes
 
-- [Introducción al paquete
-  queRemosaprobar](https://manuelabulgubure.github.io/queRemosapRobar/articles/vineta_queRemosaprobar.md):
+- [Paquete meteorológico:
+  queRemosapRobar](https://manuelabulgubure.github.io/queRemosapRobar/articles/vineta_queRemosaprobar.md):

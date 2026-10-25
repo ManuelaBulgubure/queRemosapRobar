@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Introducción al paquete queRemosaprobar • queRemosapRobar</title>
+<title>Paquete meteorológico: queRemosapRobar • queRemosapRobar</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introducción al paquete queRemosaprobar">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Paquete meteorológico: queRemosapRobar">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -33,7 +33,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/vineta_queRemosaprobar.html">Introducción al paquete queRemosaprobar</a></li>
+<li><a class="dropdown-item" href="../articles/vineta_queRemosaprobar.html">Paquete meteorológico: queRemosapRobar</a></li>
   </ul>
 </li>
       </ul>
@@ -55,7 +55,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Introducción al paquete queRemosaprobar</h1>
+      <h1>Paquete meteorológico: queRemosapRobar</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ManuelaBulgubure/queRemosapRobar/blob/master/vignettes/vineta_queRemosaprobar.Rmd" class="external-link"><code>vignettes/vineta_queRemosaprobar.Rmd</code></a></small>
@@ -67,23 +67,38 @@
 <div class="section level2">
 <h2 id="introducción">Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n"></a>
 </h2>
-<p>El paquete <code>queRemosaprobar</code> proporciona herramientas para
+<p>El paquete <code>queRemosapRobar</code> proporciona herramientas para
 la lectura, estructuración, análisis y visualización de datos
 meteorológicos provenientes de estaciones de medición. Esta viñeta
 muestra un flujo de trabajo básico utilizando las funciones principales
 del paquete:</p>
 <ol style="list-style-type: decimal">
-<li>Lectura e importación de datos desde GitHub.</li>
-<li>Cálculo de resúmenes estadísticos de temperatura.</li>
-<li>Visualización de la evolución mensual de temperatura por
-estación.</li>
+<li>
+<strong>Lectura e Importación de Datos</strong>
+(<code>lectura_datos</code>)</li>
+<li>
+<strong>Conteo de Observaciones Válidas</strong>
+(<code>conteo_obs_temp</code>)</li>
+<li>
+<strong>Resumen Estadístico de Temperatura</strong>
+(<code>tabla_resumen_temperatura</code>)</li>
+<li>
+<strong>Temperaturas Extremas por Estación</strong>
+(<code>extremos_temperatura_estacion</code>)</li>
+<li>
+<strong>Temperatura Promedio Anual</strong>
+(<code>temperatura_promedio_anual</code>)</li>
+<li>
+<strong>Visualización de la Evolución Mensual</strong>
+(<code>grafico_temperatura_mensual</code>)</li>
 </ol>
 <div class="section level3">
 <h3 id="lectura-e-importación-de-datos">Lectura e Importación de Datos<a class="anchor" aria-label="anchor" href="#lectura-e-importaci%C3%B3n-de-datos"></a>
 </h3>
-<p>La función lectura_datos() permite descargar e importar un archivo
-CSV con mediciones climáticas a partir del identificador de la estación.
-Si el archivo ya existe en tu equipo local, lo lee directamente.</p>
+<p>La función <code><a href="../reference/lectura_datos.html">lectura_datos()</a></code> permite descargar e importar
+un archivo CSV con mediciones climáticas a partir del identificador de
+la estación. Si el archivo ya existe en tu equipo local, lo lee
+directamente.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Ejemplo de lectura para la estación "nh0437"</span></span>
 <span><span class="va">datos_clima</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lectura_datos.html">lectura_datos</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"nh0437"</span>, ruta <span class="op">=</span> <span class="st">"nh0437.csv"</span><span class="op">)</span></span>
@@ -92,17 +107,58 @@ Si el archivo ya existe en tu equipo local, lo lee directamente.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="conteo-de-observaciones-válidas">Conteo de Observaciones Válidas<a class="anchor" aria-label="anchor" href="#conteo-de-observaciones-v%C3%A1lidas"></a>
+</h3>
+<p>Para verificar la calidad y disponibilidad de los datos registrados a
+distintas alturas o profundidades por cada estación, utilizamos la
+función <code><a href="../reference/conteo_obs_temp.html">conteo_obs_temp()</a></code>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular el conteo de observaciones válidas</span></span>
+<span><span class="va">conteo_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conteo_obs_temp.html">conteo_obs_temp</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Mostrar el resultado</span></span>
+<span><span class="va">conteo_obs</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="resumen-estadístico-de-temperatura">Resumen Estadístico de Temperatura<a class="anchor" aria-label="anchor" href="#resumen-estad%C3%ADstico-de-temperatura"></a>
 </h3>
 <p>Con la función <code><a href="../reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura()</a></code>, podemos
 obtener una tabla agrupada por estación (<code>id</code>) que calcula la
 temperatura promedio, mínima y máxima (a 150 cm de altura):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo de tabla resumen</span></span>
 <span><span class="va">resumen_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
 <span><span class="va">resumen_temp</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="temperaturas-extremas-por-estación">Temperaturas Extremas por Estación<a class="anchor" aria-label="anchor" href="#temperaturas-extremas-por-estaci%C3%B3n"></a>
+</h3>
+<p>La función <code><a href="../reference/extremos_temperatura_estacion.html">extremos_temperatura_estacion()</a></code> permite
+identificar los valores mínimos y máximos absolutos registrados a
+diferentes alturas, facilitando la detección de eventos térmicos
+destacados:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Cálculo de temperaturas extremas</span></span>
+<span><span class="va">extremos_estacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extremos_temperatura_estacion.html">extremos_temperatura_estacion</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Mostrar el resultado</span></span>
+<span><span class="va">extremos_estacion</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="temperatura-promedio-anual">Temperatura Promedio Anual<a class="anchor" aria-label="anchor" href="#temperatura-promedio-anual"></a>
+</h3>
+<p>Si nuestro objetivo es realizar un seguimiento a mayor escala
+temporal, podemos extraer los años a partir de las fechas y calcular la
+temperatura de abrigo promedio anual por estación mediante
+<code><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual()</a></code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Cálculo del promedio anual</span></span>
+<span><span class="va">promedio_anual</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Mostrar el resultado</span></span>
+<span><span class="va">promedio_anual</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualización-de-la-evolución-mensual">Visualización de la Evolución Mensual<a class="anchor" aria-label="anchor" href="#visualizaci%C3%B3n-de-la-evoluci%C3%B3n-mensual"></a>
@@ -111,8 +167,10 @@ temperatura promedio, mínima y máxima (a 150 cm de altura):</p>
 del año, utilizamos <code><a href="../reference/grafico_temperatura_mensual.html">grafico_temperatura_mensual()</a></code>. Esta
 función genera un gráfico de líneas interactivo construido sobre
 <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Generar el gráfico mensual de la estación</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Generar el gráfico mensual de la estación</span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/grafico_temperatura_mensual.html">grafico_temperatura_mensual</a></span><span class="op">(</span></span>
 <span>  data_frame <span class="op">=</span> <span class="va">datos_clima</span>, </span>
 <span>  titulo <span class="op">=</span> <span class="st">"Evolución Mensual de Temperatura - Estación NH0437"</span></span>
