@@ -17,7 +17,7 @@
 
 
 lectura_datos <- function(id, ruta){
-  url_estacion <- paste0("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/", id, ".csv")
+  url_estacion <- paste0(" https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/", id, ".csv")
   if(!file.exists(ruta)){
     cli::cli_inform("El archivo no fue encontrado")
     download.file(url = url_estacion, destfile = ruta)
