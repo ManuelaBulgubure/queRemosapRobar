@@ -15,10 +15,13 @@ BugReports: https://github.com/ManuelaBulgubure/queRemosapRobar/issues
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tibble
 VignetteBuilder: knitr
 Imports: 
+    cli,
     dplyr,
     ggplot2,
-    lubridate
+    lubridate,
+    readr
 Config/testthat/edition: 3
