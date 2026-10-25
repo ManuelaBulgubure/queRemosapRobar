@@ -63,7 +63,22 @@ datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
 head(datos_clima)
 ```
 
-### 2. Resumen Estadístico de Temperatura (`tabla_resumen_temperatura`)
+### 2. Conteo de observaciones de temperatura por estación (`conteo_obs_temp()`)
+
+Se recomienda utilizar la función
+[`conteo_obs_temp()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/conteo_obs_temp.md)
+para contabilizar los registros válidos de distintas temperaturas
+agrupadas por estación:
+
+``` R
+# Realizar el conteo de observaciones no nulas
+conteo_obs <- conteo_obs_temp(datos_clima)
+
+# Mostrar el resultado en consola
+conteo_obs
+```
+
+### 3. Resumen Estadístico de Temperatura (`tabla_resumen_temperatura`)
 
 Utilizando la función
 [`tabla_resumen_temperatura()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/tabla_resumen_temperatura.md),
@@ -79,7 +94,37 @@ resumen_temp <- tabla_resumen_temperatura(datos_clima)
 resumen_temp
 ```
 
-### 3. Visualización de la Evolución Mensual (`grafico_temperatura_mensual`)
+### 4. Extremos de temperatura por estación (`extremos_temperatura_estacion`)
+
+Se utiliza
+[`extremos_temperatura_estacion()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/extremos_temperatura_estacion.md)
+para calcular de forma rápida los valores mínimos y máximos a cada
+altura/profundidad registrados en cada estación.
+
+``` R
+# Cálculo de valores mínimos y máximos
+resumen_extremos <- extremos_temperatura_estacion(datos_clima)
+
+# Mostrar el resultado en consola
+resumen_extremos
+```
+
+### 5. Temperatura promedio anual por estación (`temperatura_promedio_anual`)
+
+La función
+[`temperatura_promedio_anual()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/temperatura_promedio_anual.md)
+devuelve una tabla que contiene la estación, el año de registro y la
+temperatura promedio de abrigo a 150 cm correspondiente.
+
+``` R
+# Cálculo de temperatura promedio según estación y año
+temp_promedio <- temperatura_promedio_anual(datos_clima)
+
+# Mostrar el resultado en consola
+temp_promedio
+```
+
+### 6. Visualización de la Evolución Mensual (`grafico_temperatura_mensual`)
 
 Para analizar el comportamiento temporal y las tendencias de la
 temperatura a lo largo del año, utilizamos

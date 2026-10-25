@@ -86,21 +86,51 @@
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">head</span>(datos_clima)</span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_2-resumen-estadístico-de-temperatura-tabla_resumen_temperatura">2. Resumen Estadístico de Temperatura (<code>tabla_resumen_temperatura</code>)<a class="anchor" aria-label="anchor" href="#id_2-resumen-estad%C3%ADstico-de-temperatura-tabla_resumen_temperatura"></a>
+<h3 id="id_2-conteo-de-observaciones-de-temperatura-por-estación-conteo_obs_temp">2. Conteo de observaciones de temperatura por estación (<code>conteo_obs_temp()</code>)<a class="anchor" aria-label="anchor" href="#id_2-conteo-de-observaciones-de-temperatura-por-estaci%C3%B3n-conteo_obs_temp"></a>
 </h3>
-<p>Utilizando la función <code><a href="reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura()</a></code>, es posible obtener una tabla estructurada y agrupada por estación (<code>id</code>) que calcula automáticamente la temperatura promedio, mínima y máxima a 150 cm de altura:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Cálculo de la tabla resumen estadística</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>resumen_temp <span class="ot">&lt;-</span> <span class="fu">tabla_resumen_temperatura</span>(datos_clima)</span>
+<p>Se recomienda utilizar la función <code><a href="reference/conteo_obs_temp.html">conteo_obs_temp()</a></code> para contabilizar los registros válidos de distintas temperaturas agrupadas por estación:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Realizar el conteo de observaciones no nulas</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>conteo_obs <span class="ot">&lt;-</span> <span class="fu">conteo_obs_temp</span>(datos_clima)</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># Mostrar el resultado en consola</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>resumen_temp</span></code></pre></div>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>conteo_obs</span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_3-visualización-de-la-evolución-mensual-grafico_temperatura_mensual">3. Visualización de la Evolución Mensual (<code>grafico_temperatura_mensual</code>)<a class="anchor" aria-label="anchor" href="#id_3-visualizaci%C3%B3n-de-la-evoluci%C3%B3n-mensual-grafico_temperatura_mensual"></a>
+<h3 id="id_3-resumen-estadístico-de-temperatura-tabla_resumen_temperatura">3. Resumen Estadístico de Temperatura (<code>tabla_resumen_temperatura</code>)<a class="anchor" aria-label="anchor" href="#id_3-resumen-estad%C3%ADstico-de-temperatura-tabla_resumen_temperatura"></a>
+</h3>
+<p>Utilizando la función <code><a href="reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura()</a></code>, es posible obtener una tabla estructurada y agrupada por estación (<code>id</code>) que calcula automáticamente la temperatura promedio, mínima y máxima a 150 cm de altura:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Cálculo de la tabla resumen estadística</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>resumen_temp <span class="ot">&lt;-</span> <span class="fu">tabla_resumen_temperatura</span>(datos_clima)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># Mostrar el resultado en consola</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>resumen_temp</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_4-extremos-de-temperatura-por-estación-extremos_temperatura_estacion">4. Extremos de temperatura por estación (<code>extremos_temperatura_estacion</code>)<a class="anchor" aria-label="anchor" href="#id_4-extremos-de-temperatura-por-estaci%C3%B3n-extremos_temperatura_estacion"></a>
+</h3>
+<p>Se utiliza <code><a href="reference/extremos_temperatura_estacion.html">extremos_temperatura_estacion()</a></code> para calcular de forma rápida los valores mínimos y máximos a cada altura/profundidad registrados en cada estación.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Cálculo de valores mínimos y máximos</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>resumen_extremos <span class="ot">&lt;-</span> <span class="fu">extremos_temperatura_estacion</span>(datos_clima)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># Mostrar el resultado en consola</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>resumen_extremos</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_5-temperatura-promedio-anual-por-estación-temperatura_promedio_anual">5. Temperatura promedio anual por estación (<code>temperatura_promedio_anual</code>)<a class="anchor" aria-label="anchor" href="#id_5-temperatura-promedio-anual-por-estaci%C3%B3n-temperatura_promedio_anual"></a>
+</h3>
+<p>La función <code><a href="reference/temperatura_promedio_anual.html">temperatura_promedio_anual()</a></code> devuelve una tabla que contiene la estación, el año de registro y la temperatura promedio de abrigo a 150 cm correspondiente.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Cálculo de temperatura promedio según estación y año</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>temp_promedio <span class="ot">&lt;-</span> <span class="fu">temperatura_promedio_anual</span>(datos_clima)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># Mostrar el resultado en consola</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>temp_promedio</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_6-visualización-de-la-evolución-mensual-grafico_temperatura_mensual">6. Visualización de la Evolución Mensual (<code>grafico_temperatura_mensual</code>)<a class="anchor" aria-label="anchor" href="#id_6-visualizaci%C3%B3n-de-la-evoluci%C3%B3n-mensual-grafico_temperatura_mensual"></a>
 </h3>
 <p>Para analizar el comportamiento temporal y las tendencias de la temperatura a lo largo del año, utilizamos <code><a href="reference/grafico_temperatura_mensual.html">grafico_temperatura_mensual()</a></code>. Esta función genera una visualización gráfica clara y estéticamente cuidada construida sobre <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Generación del gráfico mensual para la estación</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">grafico_temperatura_mensual</span>(<span class="at">data_frame =</span> datos_clima, <span class="at">titulo =</span> <span class="st">"Evolución Mensual de Temperatura - Estación NH0437"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Generación del gráfico mensual para la estación</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">grafico_temperatura_mensual</span>(<span class="at">data_frame =</span> datos_clima, <span class="at">titulo =</span> <span class="st">"Evolución Mensual de Temperatura - Estación NH0437"</span>)</span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -108,7 +138,7 @@
 <h2 id="viñeta-de-introducción">Viñeta de Introducción<a class="anchor" aria-label="anchor" href="#vi%C3%B1eta-de-introducci%C3%B3n"></a>
 </h2>
 <p>Si querés profundizar en los conceptos, ver más ejemplos prácticos y entender en detalle la arquitectura del paquete, podés consultar la viñeta interactiva integrada ejecutando el siguiente comando en tu consola de R:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"vineta_queRemosaprobar"</span>, <span class="at">package =</span> <span class="st">"queRemosaprobar"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"vineta_queRemosaprobar"</span>, <span class="at">package =</span> <span class="st">"queRemosaprobar"</span>)</span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
