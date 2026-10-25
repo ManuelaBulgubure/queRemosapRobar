@@ -20,5 +20,6 @@ Suggests:
 VignetteBuilder: knitr
 Imports: 
     dplyr,
-    ggplot2
+    ggplot2,
+    lubridate
 Config/testthat/edition: 3
