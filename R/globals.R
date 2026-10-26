@@ -1,0 +1,12 @@
+utils::globalVariables(c(
+  "id",
+  "temperatura_abrigo_150cm",
+  "temperatura_inte_5cm",
+  "temperatura_suelo_10cm_media",
+  "temperatura_intemperie_50cm_minima",
+  "temperatura_abrigo_150cm_maxima",
+  "temperatura_abrigo_150cm_minima",
+  "fecha",
+  "mes",
+  "anio"
+))
