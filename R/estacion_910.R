@@ -1,0 +1,45 @@
+#' Datos meteorológicos de la Estación 910
+#'
+#' Un conjunto de datos detallado que contiene registros diarios de temperatura,
+#' humedad, vientos, precipitaciones, radiación y otras variables agrometeorológicas.
+#'
+#' @format Un data frame con las siguientes 35 variables:
+#' \describe{
+#'   \item{id}{Identificador de la estación.}
+#'   \item{fecha}{Fecha y hora de la medición.}
+#'   \item{temperatura_abrigo_150cm}{Temperatura de abrigo medida a 150 cm de altura (media).}
+#'   \item{temperatura_abrigo_150cm_maxima}{Temperatura máxima de abrigo a 150 cm.}
+#'   \item{temperatura_abrigo_150cm_minima}{Temperatura mínima de abrigo a 150 cm.}
+#'   \item{temperatura_intemperie_5cm_minima}{Temperatura mínima a la intemperie a 5 cm de altura.}
+#'   \item{temperatura_intemperie_50cm_minima}{Temperatura mínima a la intemperie a 50 cm de altura.}
+#'   \item{temperatura_suelo_5cm_media}{Temperatura media del suelo a 5 cm de profundidad.}
+#'   \item{temperatura_suelo_10cm_media}{Temperatura media del suelo a 10 cm de profundidad.}
+#'   \item{temperatura_inte_5cm}{Temperatura a la intemperie a 5 cm.}
+#'   \item{temperatura_intemperie_150cm_minima}{Temperatura mínima a la intemperie a 150 cm.}
+#'   \item{humedad_suelo}{Nivel de humedad del suelo.}
+#'   \item{precipitacion_pluviometrica}{Precipitación acumulada (pluviómetro).}
+#'   \item{granizo}{Presencia o registro de granizo.}
+#'   \item{nieve}{Presencia o registro de nieve.}
+#'   \item{heliofania_efectiva}{Heliofanía efectiva (horas de brillo solar).}
+#'   \item{heliofania_relativa}{Heliofanía relativa (porcentaje).}
+#'   \item{tesion_vapor_media}{Tensión de vapor media.}
+#'   \item{humedad_media}{Humedad relativa media.}
+#'   \item{humedad_media_8_14_20}{Humedad media calculada en los horarios 8, 14 y 20.}
+#'   \item{rocio_medio}{Punto de rocío medio.}
+#'   \item{duracion_follaje_mojado}{Duración del follaje mojado.}
+#'   \item{velocidad_viento_200cm_media}{Velocidad media del viento a 200 cm de altura.}
+#'   \item{direccion_viento_200cm}{Dirección del viento a 200 cm.}
+#'   \item{velocidad_viento_1000cm_media}{Velocidad media del viento a 1000 cm de altura.}
+#'   \item{direccion_viento_1000cm}{Dirección del viento a 1000 cm.}
+#'   \item{velocidad_viento_maxima}{Velocidad máxima del viento registrada.}
+#'   \item{presion_media}{Presión atmosférica media.}
+#'   \item{radiacion_global}{Radiación solar global.}
+#'   \item{radiacion_neta}{Radiación neta.}
+#'   \item{evaporacion_tanque}{Evaporación en tanque.}
+#'   \item{evapotranspiracion_potencial}{Evapotranspiración potencial (ETP).}
+#'   \item{profundidad_napa}{Profundidad de la napa freática.}
+#'   \item{horas_frio}{Acumulación de horas de frío.}
+#'   \item{unidad_frio}{Unidades de frío calculadas.}
+#' }
+#' @source Datos provistos por la cátedra / fuentes académicas.
+"estacion_910"
