@@ -1,5 +1,9 @@
 # queRemosapRobar
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![codecov](https://codecov.io/gh/ManuelaBulgubure/queRemosapRobar/graph/badge.svg?token=3VQZNREAKV)](https://codecov.io/gh/ManuelaBulgubure/queRemosapRobar)
+
 El objetivo principal del paquete **queRemosapRobar** es proporcionar un
 conjunto robusto y estructurado de herramientas en R para la lectura, el
 procesamiento, el análisis estadístico y la visualización de datos
