@@ -18,9 +18,6 @@
 
 grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Temperatura") {
 
-  # Declaramos la variable global para evitar el NOTE del check
-  utils::globalVariables("prom_temp")
-
   promedio_temp <- data_frame |>
     dplyr::mutate(mes = lubridate::month(fecha)) |>
     dplyr::group_by(id, mes) |>
