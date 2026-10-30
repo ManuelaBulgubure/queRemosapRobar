@@ -8,5 +8,6 @@ utils::globalVariables(c(
   "temperatura_abrigo_150cm_minima",
   "fecha",
   "mes",
-  "anio"
+  "anio",
+  "prom_temp"
 ))
