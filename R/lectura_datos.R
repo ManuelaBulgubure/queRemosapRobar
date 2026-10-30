@@ -1,6 +1,6 @@
 #' Lectura de datos meteorológicos por estación
 #'
-#' Descarga un archivo CSV de datos meteorológicos desde el respositorio de Github
+#' Descarga un archivo CSV de datos meteorológicos desde el repositorio de Github
 #' si éste no existe localmente en la ruta especificada y retorna un \code{tbl_df} con los datos.
 #'
 #' @param id cadena de texto con el identificador de cada estación

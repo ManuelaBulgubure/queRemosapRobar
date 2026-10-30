@@ -2,7 +2,7 @@
 #'
 #' Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada estación
 #'
-#' @param datos Un dataframe que contenga al menos las columnas "id" g "temperatura_abrigo_150cm"
+#' @param datos Un dataframe que contenga al menos las columnas "id" y "temperatura_abrigo_150cm"
 #'
 #' @return Un dataframe (resumen) con una fila por estación (identificada por su ID)
 #' y las siguientes columnas calculadas:
