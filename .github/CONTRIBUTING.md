@@ -18,7 +18,7 @@ Para mantener el paquete ordenado y sin romper nada, asegurate de:
 ### 2. Paso a paso para subir tus cambios
 
 1. **Creá una rama (*branch*):** 
-   No pushees directo a `main`. Arma una rama con un nombre descriptivo:
+   No pushees directo a `master`. Armá una rama con un nombre descriptivo:
    ```bash
    git checkout -b feature/nueva-grafica
    ```
@@ -28,7 +28,7 @@ comandos de verificación en tu consola.
 
 3. **Mandá un Pull Request (PR):**
 Pushea tu rama a GitHub, abrí un Pull Request explicando brevemente 
-los cambios y avisale al equipo para lo revisemos.
+los cambios y avisale al equipo para que lo revisemos.
 
 ---
    
