@@ -1,13 +1,13 @@
-#' Graficar la temperatura promedio mensual por estacion
+#' Graficar la temperatura promedio mensual por estación
 #'
 #' @param data_frame Un dataframe con al menos las columnas "fecha",
 #' "id" y "temperatura_abrigo_150cm".
 #' @param colores vector (opcional) de caracteres con colores para cada estacion.
 #' Si no se especifican suficientes colores, se eligen de forma aleatoria.
-#' @param titulo Sera el titulo del grafico (cadena de caracteres).
+#' @param titulo Será el título del gráfico (cadena de caracteres).
 #' Por default es "Temperatura"
 #'
-#' @return Un grafico hecho con ggplot con la linea de evolucion mensual por estacion
+#' @return Un gráfico hecho con ggplot con la línea de evolución mensual por estación
 #' @export
 #'
 #' @examples
