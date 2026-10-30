@@ -20,7 +20,7 @@ lectura_datos <- function(id, ruta){
   url_estacion <- paste0("https://raw.githubusercontent.com/ManuelaBulgubure/intro-programacion/main/datos/", ruta)
   if(!file.exists(ruta)){
     cli::cli_inform("El archivo no fue encontrado")
-    download.file(url = url_estacion, destfile = ruta)
+    utils::download.file(url = url_estacion, destfile = ruta)
   } else{
     cli::cli_inform("El archivo ya existe en tu computadora")
   }
