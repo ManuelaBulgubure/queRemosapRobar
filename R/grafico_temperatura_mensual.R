@@ -1,19 +1,19 @@
-#' Graficar la temperatura promedio mensual por estaci\u00f3n
+#' Graficar la temperatura promedio mensual por estación
 #'
 #' @param data_frame Un dataframe con al menos las columnas "fecha",
 #' "id" y "temperatura_abrigo_150cm".
-#' @param colores vector (opcional) de caracteres con colores para cada estaci\u00f3n.
+#' @param colores vector (opcional) de caracteres con colores para cada estación.
 #' Si no se especifican suficientes colores, se eligen de forma aleatoria.
-#' @param titulo Ser\u00e1 el t\u00edtulo del gr\u00e1fico (cadena de caracteres).
+#' @param titulo Será el título del gráfico (cadena de caracteres).
 #' Por default es "Temperatura"
 #'
-#' @return Un gr\u00e1fico hecho con ggplot con la l\u00ednea de evoluci\u00f3n mensual por estaci\u00f3n
+#' @return Un gráfico hecho con ggplot con la línea de evolución mensual por estación.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'   datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
-#'   grafico_temperatura_mensual(datos_clima, titulo = "Evoluci\u00f3n Mensual NH0437")
+#'   grafico_temperatura_mensual(datos_clima, titulo = "Evolución Mensual NH0437")
 #' }
 
 grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Temperatura") {
@@ -36,8 +36,8 @@ grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Te
   ggplot2::ggplot(
     data = promedio_temp,
     mapping = ggplot2::aes(x = mes, y = prom_temp, color = as.character(id))) +
-    # el as.character(id) le indica a ggplot2 que id es una categor\u00eda y no una medici\u00f3n num\u00e9rica.
-    # Permite que scale_color_manual(values = colores) asigne un color individual y distinto a cada estaci\u00f3n.
+    # el as.character(id) le indica a ggplot2 que id es una categoría y no una medición numérica.
+    # Permite que scale_color_manual(values = colores) asigne un color individual y distinto a cada estación.
     ggplot2::geom_line() +
     ggplot2::scale_color_manual(values = colores) +
     ggplot2::labs(

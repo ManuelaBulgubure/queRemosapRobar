@@ -2,7 +2,7 @@
 % Please edit documentation in R/grafico_temperatura_mensual.R
 \name{grafico_temperatura_mensual}
 \alias{grafico_temperatura_mensual}
-\title{Graficar la temperatura promedio mensual por estaci\u00f3n}
+\title{Graficar la temperatura promedio mensual por estación}
 \usage{
 grafico_temperatura_mensual(data_frame, colores = NULL, titulo = "Temperatura")
 }
@@ -10,21 +10,21 @@ grafico_temperatura_mensual(data_frame, colores = NULL, titulo = "Temperatura")
 \item{data_frame}{Un dataframe con al menos las columnas "fecha",
 "id" y "temperatura_abrigo_150cm".}
 
-\item{colores}{vector (opcional) de caracteres con colores para cada estaci\u00f3n.
+\item{colores}{vector (opcional) de caracteres con colores para cada estación.
 Si no se especifican suficientes colores, se eligen de forma aleatoria.}
 
-\item{titulo}{Ser\u00e1 el t\u00edtulo del gr\u00e1fico (cadena de caracteres).
+\item{titulo}{Será el título del gráfico (cadena de caracteres).
 Por default es "Temperatura"}
 }
 \value{
-Un gr\u00e1fico hecho con ggplot con la l\u00ednea de evoluci\u00f3n mensual por estaci\u00f3n
+Un gráfico hecho con ggplot con la línea de evolución mensual por estación.
 }
 \description{
-Graficar la temperatura promedio mensual por estaci\u00f3n
+Graficar la temperatura promedio mensual por estación
 }
 \examples{
 \dontrun{
   datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
-  grafico_temperatura_mensual(datos_clima, titulo = "Evoluci\u00f3n Mensual NH0437")
+  grafico_temperatura_mensual(datos_clima, titulo = "Evolución Mensual NH0437")
 }
 }
