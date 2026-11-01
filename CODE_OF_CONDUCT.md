@@ -25,4 +25,4 @@ repositorio (Issues, Pull Requests o chats de trabajo).
 
 Si surge cualquier problema o situación incómoda, podés comunicarte con
 el equipo de manera privada a: - `pguerscovich@mail.austral.edu.ar` -
-`mbulgubure2@mail.austral.edu.ar`
+`mbulgubure@mail.austral.edu.ar`
