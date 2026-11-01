@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'   datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+#'   datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
 #'   grafico_temperatura_mensual(datos_clima, titulo = "Evoluci\u00f3n Mensual NH0437")
 #' }
 

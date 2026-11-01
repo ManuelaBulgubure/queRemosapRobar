@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'   datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+#'   datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
 #'   promedio_anual <- temperatura_promedio_anual(datos_clima)
 #'   print(promedio_anual)
 #' }
