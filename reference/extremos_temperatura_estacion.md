@@ -46,7 +46,7 @@ columnas calculadas:
 
 ``` r
 if (FALSE) { # \dontrun{
-  datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+  datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
   extremos <- extremos_temperatura_estacion(datos_clima)
   print(extremos)
 } # }

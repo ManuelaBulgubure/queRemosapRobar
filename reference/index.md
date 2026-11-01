@@ -11,7 +11,7 @@
 - [`extremos_temperatura_estacion()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/extremos_temperatura_estacion.md)
   : Calcular temperaturas extremas (mínimas y máximas) por estación
 - [`grafico_temperatura_mensual()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/grafico_temperatura_mensual.md)
-  : Graficar la temperatura promedio mensual por estacion
+  : Graficar la temperatura promedio mensual por estación
 - [`lectura_datos()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/lectura_datos.md)
   : Lectura de datos meteorológicos por estación
 - [`metadatos`](https://manuelabulgubure.github.io/queRemosapRobar/reference/metadatos.md)

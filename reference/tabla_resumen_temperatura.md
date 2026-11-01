@@ -13,7 +13,7 @@ tabla_resumen_temperatura(datos)
 
 - datos:
 
-  Un dataframe que contenga al menos las columnas "id" g
+  Un dataframe que contenga al menos las columnas "id" y
   "temperatura_abrigo_150cm"
 
 ## Value
@@ -41,7 +41,7 @@ ID) y las siguientes columnas calculadas:
 
 ``` r
 if (FALSE) { # \dontrun{
-  datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+  datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
   resumen_temp <- tabla_resumen_temperatura(datos_clima)
   head(resumen_temp)
 } # }

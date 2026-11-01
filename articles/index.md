@@ -3,4 +3,4 @@
 ### All vignettes
 
 - [Paquete meteorológico:
-  queRemosapRobar](https://manuelabulgubure.github.io/queRemosapRobar/articles/vineta_queRemosaprobar.md):
+  queRemosapRobar](https://manuelabulgubure.github.io/queRemosapRobar/articles/vineta_queRemosapRobar.md):
