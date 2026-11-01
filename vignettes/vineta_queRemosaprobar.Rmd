@@ -38,7 +38,7 @@ La función `lectura_datos()` permite descargar e importar un archivo CSV con me
 
 ```{r lectura, eval = FALSE}
 # Ejemplo de lectura para la estación "nh0437"
-datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 
 # Inspección básica de los datos cargados
 head(datos_clima)
