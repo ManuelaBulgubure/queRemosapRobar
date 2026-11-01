@@ -120,6 +120,30 @@ grafico_temperatura_mensual(
 )
 ```
 
+## Datos incluidos
+
+El paquete incluye tres conjuntos de datos, disponibles apenas cargás la librería:
+
+| Objeto | Descripción |
+|---|---|
+| `metadatos` | Información descriptiva de 258 estaciones meteorológicas: nombre, tipo, localidad, provincia, coordenadas, altura y período de registro (11 variables). |
+| `estacion_472` | Registros diarios de la estación `NH0472`: temperaturas, humedad, viento, precipitaciones, radiación y otras variables agrometeorológicas (35 variables). |
+| `estacion_910` | Registros diarios de la estación `NH0910`, con las mismas 35 variables que `estacion_472`. |
+
+Si bien `metadatos` describe todas las estaciones, el paquete solo incluye los datos diarios de estas dos.
+
+```{r, eval = FALSE}
+library(queRemosapRobar)
+
+# Metadatos de las estaciones
+head(metadatos)
+
+# Datos diarios de una estación
+head(estacion_472)
+```
+
+Para ver el detalle de cada variable, consultá `?metadatos`, `?estacion_472` o `?estacion_910`.
+
 ## Viñeta de introducción
 
 Si querés profundizar en los conceptos, ver más ejemplos prácticos y entender en detalle la arquitectura del paquete, podés consultar la viñeta integrada ejecutando el siguiente comando en tu consola de R:
