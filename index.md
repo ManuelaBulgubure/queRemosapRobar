@@ -60,8 +60,8 @@ directamente desde el disco:
 
 ``` r
 
-# Ejemplo de importación para la estación "nh0437"
-datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+# Ejemplo de importación para la estación "NH0437"
+datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 
 # Inspección preliminar de los datos cargados
 head(datos_clima)
