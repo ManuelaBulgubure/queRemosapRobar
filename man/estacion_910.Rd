@@ -45,7 +45,7 @@ Un data frame con las siguientes 35 variables:
 }
 }
 \source{
-Datos provistos por la cátedra / fuentes académicas.
+Instituto Nacional de Tecnología Agropecuaria (INTA), Sistema de Información y Gestión Agrometeorológica (SIGA). Datos provistos por la cátedra con fines académicos.
 }
 \usage{
 estacion_910
