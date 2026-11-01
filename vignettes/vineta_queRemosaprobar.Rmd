@@ -2,7 +2,7 @@
 title: "Paquete meteorológico: queRemosapRobar"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introducción al paquete queRemosaprobar}
+  %\VignetteIndexEntry{Introducción al paquete queRemosapRobar}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -25,7 +25,7 @@ a diferentes alturas o profundidades agrupadas por el id de cada estación
 \examples{
 \dontrun{
   datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
-  conteo <- conteo_observaciones_temperatura(datos_clima)
+  conteo <- conteo_obs_temp(datos_clima)
   print(conteo)
 }
 
