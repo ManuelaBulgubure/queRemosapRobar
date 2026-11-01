@@ -150,3 +150,6 @@ la cátedra de Programación II:
 
 - Manuela Bulgubure
 - Paulina Guerscovich
+
+Si querés colaborar con el proyecto, leé la [guía de
+contribución](https://github.com/ManuelaBulgubure/queRemosapRobar/blob/master/.github/CONTRIBUTING.md).
