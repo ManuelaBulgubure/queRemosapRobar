@@ -4,6 +4,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![codecov](https://codecov.io/gh/ManuelaBulgubure/queRemosapRobar/graph/badge.svg?token=3VQZNREAKV)](https://codecov.io/gh/ManuelaBulgubure/queRemosapRobar)
+[![R-CMD-check](https://github.com/ManuelaBulgubure/queRemosapRobar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ManuelaBulgubure/queRemosapRobar/actions/workflows/R-CMD-check.yaml)
 
 El objetivo principal del paquete **queRemosapRobar** es proporcionar un
 conjunto robusto y estructurado de herramientas en R para la lectura, el
