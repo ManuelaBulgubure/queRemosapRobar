@@ -149,10 +149,49 @@
 </div>
 </div>
 <div class="section level2">
+<h2 id="datos-incluidos">Datos incluidos<a class="anchor" aria-label="anchor" href="#datos-incluidos"></a>
+</h2>
+<p>El paquete incluye tres conjuntos de datos, disponibles apenas cargás la librería:</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>Objeto</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>metadatos</code></td>
+<td>Información descriptiva de 258 estaciones meteorológicas: nombre, tipo, localidad, provincia, coordenadas, altura y período de registro (11 variables).</td>
+</tr>
+<tr>
+<td><code>estacion_472</code></td>
+<td>Registros diarios de la estación <code>NH0472</code>: temperaturas, humedad, viento, precipitaciones, radiación y otras variables agrometeorológicas (35 variables).</td>
+</tr>
+<tr>
+<td><code>estacion_910</code></td>
+<td>Registros diarios de la estación <code>NH0910</code>, con las mismas 35 variables que <code>estacion_472</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Si bien <code>metadatos</code> describe todas las estaciones, el paquete solo incluye los datos diarios de estas dos.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ManuelaBulgubure/queRemosapRobar" class="external-link">queRemosapRobar</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Metadatos de las estaciones</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">metadatos</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Datos diarios de una estación</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">estacion_472</span><span class="op">)</span></span></code></pre></div>
+<p>Para ver el detalle de cada variable, consultá <code><a href="reference/metadatos.html">?metadatos</a></code>, <code><a href="reference/estacion_472.html">?estacion_472</a></code> o <code><a href="reference/estacion_910.html">?estacion_910</a></code>.</p>
+</div>
+<div class="section level2">
 <h2 id="viñeta-de-introducción">Viñeta de introducción<a class="anchor" aria-label="anchor" href="#vi%C3%B1eta-de-introducci%C3%B3n"></a>
 </h2>
 <p>Si querés profundizar en los conceptos, ver más ejemplos prácticos y entender en detalle la arquitectura del paquete, podés consultar la viñeta integrada ejecutando el siguiente comando en tu consola de R:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"vineta_queRemosapRobar"</span>, package <span class="op">=</span> <span class="st">"queRemosapRobar"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
