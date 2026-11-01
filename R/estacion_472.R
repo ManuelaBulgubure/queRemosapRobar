@@ -41,6 +41,6 @@
 #'   \item{horas_frio}{Acumulación de horas de frío.}
 #'   \item{unidad_frio}{Unidades de frío calculadas.}
 #' }
-#' @source Datos provistos por la cátedra / fuentes académicas.
+#' @source Instituto Nacional de Tecnología Agropecuaria (INTA), Sistema de Información y Gestión Agrometeorológica (SIGA). Datos provistos por la cátedra con fines académicos.
 
 "estacion_472"

@@ -17,6 +17,6 @@
 #'   \item{desde}{Fecha de inicio de los registros (formato de fecha y hora UTC).}
 #'   \item{hasta}{Fecha de cierre o última actualización de los registros.}
 #' }
-#' @source Datos provistos por la cátedra / fuentes académicas.
+#' @source Instituto Nacional de Tecnología Agropecuaria (INTA), Sistema de Información y Gestión Agrometeorológica (SIGA). Datos provistos por la cátedra con fines académicos.
 
 "metadatos"

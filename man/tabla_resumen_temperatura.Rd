@@ -7,7 +7,7 @@
 tabla_resumen_temperatura(datos)
 }
 \arguments{
-\item{datos}{Un dataframe que contenga al menos las columnas "id" g "temperatura_abrigo_150cm"}
+\item{datos}{Un dataframe que contenga al menos las columnas "id" y "temperatura_abrigo_150cm"}
 }
 \value{
 Un dataframe (resumen) con una fila por estación (identificada por su ID)
@@ -22,7 +22,7 @@ Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada estación
 }
 \examples{
 \dontrun{
-  datos_clima <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+  datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
   resumen_temp <- tabla_resumen_temperatura(datos_clima)
   head(resumen_temp)
 }

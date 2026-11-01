@@ -16,11 +16,11 @@ donde se desea leer/instalar el CSV}
 Un dataframe con los datos de la estación indicada.
 }
 \description{
-Descarga un archivo CSV de datos meteorológicos desde el respositorio de Github
+Descarga un archivo CSV de datos meteorológicos desde el repositorio de Github
 si éste no existe localmente en la ruta especificada y retorna un \code{tbl_df} con los datos.
 }
 \examples{
 \dontrun{
-  datos_nh0437 <- lectura_datos(id = "nh0437", ruta = "nh0437.csv")
+  datos_nh0437 <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
 }
 }
