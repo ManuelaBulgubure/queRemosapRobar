@@ -227,5 +227,13 @@ la cátedra de Programación II:
 - Manuela Bulgubure
 - Paulina Guerscovich
 
+### Cómo contribuir
+
 Si querés colaborar con el proyecto, leé la [guía de
-contribución](https://github.com/ManuelaBulgubure/queRemosapRobar/blob/master/.github/CONTRIBUTING.md).
+contribución](https://github.com/ManuelaBulgubure/queRemosapRobar/blob/master/.github/CONTRIBUTING.md),
+donde explicamos cómo proponer cambios mediante ramas y *pull requests*.
+
+Este proyecto se rige por un [código de
+conducta](https://github.com/ManuelaBulgubure/queRemosapRobar/blob/master/CODE_OF_CONDUCT.md).
+Al participar (en *issues*, *pull requests* o chats de trabajo) te
+pedimos respetarlo.

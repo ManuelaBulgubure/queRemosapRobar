@@ -2,7 +2,8 @@
 
 Calcula las temperaturas mínimas y máximas registradas a distintas
 alturas o profundidades, agrupadas por el identificador de cada
-estación.
+estación. Si una estación no tiene ningún valor válido en una variable,
+el resultado para esa variable es `NA`.
 
 ## Usage
 
@@ -40,7 +41,7 @@ columnas calculadas:
 
 - temp_minima_5cm:
 
-  Temperatura mínima a 5 cm
+  Temperatura mínima a 5 cm en intemperie
 
 ## Examples
 

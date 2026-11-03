@@ -44,7 +44,7 @@ si éste no existe localmente en la ruta especificada y retorna un <code>tbl_df<
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">lectura_datos</span><span class="op">(</span><span class="va">id</span>, <span class="va">ruta</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">lectura_datos</span><span class="op">(</span><span class="va">id</span>, ruta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">id</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -52,12 +52,16 @@ si éste no existe localmente en la ruta especificada y retorna un <code>tbl_df<
 
 
 <dl><dt id="arg-id">id<a class="anchor" aria-label="anchor" href="#arg-id"></a></dt>
-<dd><p>cadena de texto con el identificador de cada estación</p></dd>
+<dd><p>cadena de texto con el identificador de cada estación (por ejemplo,
+<code>"NH0437"</code>). Se usa para armar la dirección de descarga, ya que el archivo
+remoto se llama como el identificador seguido de <code>".csv"</code>. Distingue
+mayúsculas de minúsculas.</p></dd>
 
 
 <dt id="arg-ruta">ruta<a class="anchor" aria-label="anchor" href="#arg-ruta"></a></dt>
 <dd><p>cadena de texto con la ruta local (incluyendo el nombre del archivo)
-donde se desea leer/instalar el CSV</p></dd>
+donde se desea leer/instalar el CSV. Por defecto es <code>paste0(id, ".csv")</code>,
+es decir, un archivo en la carpeta de trabajo.</p></dd>
 
 </dl></div>
     <div class="section level2">

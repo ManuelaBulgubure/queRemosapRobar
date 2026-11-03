@@ -1,7 +1,8 @@
 # Tabla resumen temperatura por estación
 
 Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada
-estación
+estación. Si una estación no tiene ningún valor válido, la mínima y la
+máxima se devuelven como `NA`.
 
 ## Usage
 

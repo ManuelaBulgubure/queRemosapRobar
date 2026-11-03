@@ -1,4 +1,4 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: queRemosapRobar authors
+    COPYRIGHT HOLDER: Manuela Bulgubure, Paulina Guerscovich

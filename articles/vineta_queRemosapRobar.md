@@ -28,7 +28,7 @@ equipo local, lo lee directamente.
 
 ``` r
 
-# Ejemplo de lectura para la estación "nh0437"
+# Ejemplo de lectura para la estación "NH0437"
 datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 
 # Inspección básica de los datos cargados
@@ -63,7 +63,7 @@ Un caso de uso habitual en análisis meteorológico consiste en unificar
 los registros diarios provenientes de distintas estaciones de medición y
 cruzarlos posteriormente con la tabla descriptiva de `metadatos`.
 
-### 1. Apilar mediciones con `rbind()`
+#### 1. Apilar mediciones con `rbind()`
 
 Como `estacion_472` y `estacion_910` comparten exactamente la misma
 estructura de 35 columnas, podemos combinarlas verticalmente de forma
@@ -76,7 +76,7 @@ limpia y eficiente utilizando
 datos_diarios_unificados <- rbind(estacion_472, estacion_910)
 ```
 
-### 2. Cruzar con metadatos según el objetivo del análisis
+#### 2. Cruzar con metadatos según el objetivo del análisis
 
 Una vez unificados los registros diarios, podemos enriquecer la
 información asociando los metadatos de cada estación mediante la columna
@@ -190,8 +190,7 @@ promedio_anual
 Para analizar el comportamiento temporal de la temperatura a lo largo
 del año, utilizamos
 [`grafico_temperatura_mensual()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/grafico_temperatura_mensual.md).
-Esta función genera un gráfico de líneas interactivo construido sobre
-`ggplot2`.
+Esta función genera un gráfico de líneas construido sobre `ggplot2`.
 
 ``` r
 

@@ -45,6 +45,6 @@ Para mantener el paquete ordenado y sin romper nada, asegurate de:
 ### 3. Código de Conducta
 
 Por favor, recordá que este proyecto se rige bajo nuestro [Código de
-Conducta](https://manuelabulgubure.github.io/queRemosapRobar/CODE_OF_CONDUCT.md).
-Te pedimos leerlo antes de empezar a colaborar para mantener un espacio
-de trabajo respetuoso y agradable para todos.
+Conducta](https://manuelabulgubure.github.io/CODE_OF_CONDUCT.md). Te
+pedimos leerlo antes de empezar a colaborar para mantener un espacio de
+trabajo respetuoso y agradable para todos.

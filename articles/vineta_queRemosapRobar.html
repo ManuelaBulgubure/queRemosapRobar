@@ -101,7 +101,7 @@ un archivo CSV con mediciones climáticas a partir del identificador de
 la estación. Si el archivo ya existe en tu equipo local, lo lee
 directamente.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Ejemplo de lectura para la estación "nh0437"</span></span>
+<code class="sourceCode R"><span><span class="co"># Ejemplo de lectura para la estación "NH0437"</span></span>
 <span><span class="va">datos_clima</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lectura_datos.html">lectura_datos</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NH0437"</span>, ruta <span class="op">=</span> <span class="st">"NH0437.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Inspección básica de los datos cargados</span></span>
@@ -156,10 +156,9 @@ variable, podés ejecutar en la consola <code><a href="../reference/metadatos.ht
 unificar los registros diarios provenientes de distintas estaciones de
 medición y cruzarlos posteriormente con la tabla descriptiva de
 <code>metadatos</code>.</p>
-</div>
-<div class="section level3">
-<h3 id="apilar-mediciones-con-rbind">1. Apilar mediciones con <code>rbind()</code><a class="anchor" aria-label="anchor" href="#apilar-mediciones-con-rbind"></a>
-</h3>
+<div class="section level4">
+<h4 id="apilar-mediciones-con-rbind">1. Apilar mediciones con <code>rbind()</code><a class="anchor" aria-label="anchor" href="#apilar-mediciones-con-rbind"></a>
+</h4>
 <p>Como <code>estacion_472</code> y <code>estacion_910</code> comparten
 exactamente la misma estructura de 35 columnas, podemos combinarlas
 verticalmente de forma limpia y eficiente utilizando
@@ -168,9 +167,9 @@ verticalmente de forma limpia y eficiente utilizando
 <code class="sourceCode R"><span><span class="co"># Apilamos los registros diarios de ambas estaciones</span></span>
 <span><span class="va">datos_diarios_unificados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">estacion_472</span>, <span class="va">estacion_910</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="cruzar-con-metadatos-según-el-objetivo-del-análisis">2. Cruzar con metadatos según el objetivo del análisis<a class="anchor" aria-label="anchor" href="#cruzar-con-metadatos-seg%C3%BAn-el-objetivo-del-an%C3%A1lisis"></a>
-</h3>
+<div class="section level4">
+<h4 id="cruzar-con-metadatos-según-el-objetivo-del-análisis">2. Cruzar con metadatos según el objetivo del análisis<a class="anchor" aria-label="anchor" href="#cruzar-con-metadatos-seg%C3%BAn-el-objetivo-del-an%C3%A1lisis"></a>
+</h4>
 <p>Una vez unificados los registros diarios, podemos enriquecer la
 información asociando los metadatos de cada estación mediante la columna
 común id. Según la estrategia de análisis, se pueden aplicar dos tipos
@@ -195,6 +194,7 @@ sin mediciones válidas.</p>
 <span><span class="va">datos_filtrados</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <hr>
+</div>
 </div>
 <div class="section level3">
 <h3 id="conteo-de-observaciones-válidas">Conteo de Observaciones Válidas<a class="anchor" aria-label="anchor" href="#conteo-de-observaciones-v%C3%A1lidas"></a>
@@ -259,7 +259,7 @@ temperatura de abrigo promedio anual por estación mediante
 </h3>
 <p>Para analizar el comportamiento temporal de la temperatura a lo largo
 del año, utilizamos <code><a href="../reference/grafico_temperatura_mensual.html">grafico_temperatura_mensual()</a></code>. Esta
-función genera un gráfico de líneas interactivo construido sobre
+función genera un gráfico de líneas construido sobre
 <code>ggplot2</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
