@@ -22,8 +22,10 @@ Imports:
     cli,
     dplyr,
     ggplot2,
+    grDevices,
     lubridate,
-    readr
+    readr,
+    utils
 Config/testthat/edition: 3
 Depends: 
     R (>= 4.1.0)

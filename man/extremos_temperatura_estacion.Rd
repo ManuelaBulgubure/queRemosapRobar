@@ -17,11 +17,13 @@ siguientes columnas calculadas:
 \item{temp_minima_150cm}{Temperatura mínima a 150 cm}
 \item{temp_maxima_150cm}{Temperatura máxima a 150 cm}
 \item{temp_minima_50cm}{Temperatura mínima a 50 cm en intemperie}
-\item{temp_minima_5cm}{Temperatura mínima a 5 cm}
+\item{temp_minima_5cm}{Temperatura mínima a 5 cm en intemperie}
 }
 \description{
 Calcula las temperaturas mínimas y máximas registradas a distintas alturas
-o profundidades, agrupadas por el identificador de cada estación.
+o profundidades, agrupadas por el identificador de cada estación. Si una
+estación no tiene ningún valor válido en una variable, el resultado para esa
+variable es \code{NA}.
 }
 \examples{
 \dontrun{

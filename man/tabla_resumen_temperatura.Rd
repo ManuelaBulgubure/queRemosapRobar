@@ -18,7 +18,9 @@ y las siguientes columnas calculadas:
 \item{temp_maxima}{Temperatura máxima registrada (°C)}
 }
 \description{
-Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada estación
+Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada estación.
+Si una estación no tiene ningún valor válido, la mínima y la máxima se
+devuelven como \code{NA}.
 }
 \examples{
 \dontrun{

@@ -34,6 +34,6 @@ los cambios y avisale al equipo para que lo revisemos.
    
 ### 3. Código de Conducta
 
-Por favor, recordá que este proyecto se rige bajo nuestro [Código de Conducta](CODE_OF_CONDUCT.md). 
+Por favor, recordá que este proyecto se rige bajo nuestro [Código de Conducta](../CODE_OF_CONDUCT.md). 
 Te pedimos leerlo antes de empezar a colaborar para mantener 
 un espacio de trabajo respetuoso y agradable para todos.
