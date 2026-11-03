@@ -32,7 +32,8 @@ columnas calculadas:
 
 - temp_5cm:
 
-  Cantidad de observaciones válidas a 5 cm
+  Cantidad de observaciones válidas de la temperatura mínima a 5 cm en
+  intemperie
 
 - temp_10cm_media:
 
