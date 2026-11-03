@@ -15,7 +15,7 @@ Un \code{tbl_df} (tibble) con una fila por estación (\code{id}) y las
 siguientes columnas calculadas:
 \item{id}{Identificador de la estación}
 \item{temp_150cm}{Cantidad de observaciones válidas a 150 cm}
-\item{temp_5cm}{Cantidad de observaciones válidas a 5 cm}
+\item{temp_5cm}{Cantidad de observaciones válidas de la temperatura mínima a 5 cm en intemperie}
 \item{temp_10cm_media}{Cantidad de observaciones válidas a 10 cm de profundidad}
 }
 \description{
