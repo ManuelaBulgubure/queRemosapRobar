@@ -4,13 +4,17 @@
 \alias{lectura_datos}
 \title{Lectura de datos meteorológicos por estación}
 \usage{
-lectura_datos(id, ruta)
+lectura_datos(id, ruta = paste0(id, ".csv"))
 }
 \arguments{
-\item{id}{cadena de texto con el identificador de cada estación}
+\item{id}{cadena de texto con el identificador de cada estación (por ejemplo,
+\code{"NH0437"}). Se usa para armar la dirección de descarga, ya que el archivo
+remoto se llama como el identificador seguido de \code{".csv"}. Distingue
+mayúsculas de minúsculas.}
 
 \item{ruta}{cadena de texto con la ruta local (incluyendo el nombre del archivo)
-donde se desea leer/instalar el CSV}
+donde se desea leer/instalar el CSV. Por defecto es \code{paste0(id, ".csv")},
+es decir, un archivo en la carpeta de trabajo.}
 }
 \value{
 Un dataframe con los datos de la estación indicada.
