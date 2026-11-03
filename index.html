@@ -187,25 +187,25 @@
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">estacion_472</span><span class="op">)</span></span></code></pre></div>
 <p>Para ver el detalle de cada variable, consultá <code><a href="reference/metadatos.html">?metadatos</a></code>, <code><a href="reference/estacion_472.html">?estacion_472</a></code> o <code><a href="reference/estacion_910.html">?estacion_910</a></code>.</p>
 <div class="section level3">
-<h3 id="ejemplo-r0e1pido-de-integraci0f3n-de-datos">Ejemplo r0e1pido de integraci0f3n de datos<a class="anchor" aria-label="anchor" href="#ejemplo-r0e1pido-de-integraci0f3n-de-datos"></a>
+<h3 id="ejemplo-rápido-de-integración-de-datos">Ejemplo rápido de integración de datos<a class="anchor" aria-label="anchor" href="#ejemplo-r%C3%A1pido-de-integraci%C3%B3n-de-datos"></a>
 </h3>
-<p>Si quer0e9s trabajar de forma conjunta con los datos diarios de distintas estaciones y enriquecerlos con la informaci0f3n descriptiva, pod0e9s combinar los datasets que comparten estructura con <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind()</a></code> y luego cruzarlos con los metadatos:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># 1. Apilar los datasets diarios de las estaciones</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>datos_diarios_unificados <span class="ot">&lt;-</span> <span class="fu">rbind</span>(estacion_472, estacion_910)</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># 2. Combinar con los metadatos</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># - full_join(): Conserva absolutamente todo (ninguna estaci\u00f3n se pierde).</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># - inner_join(): Filtra estrictamente y se queda solo con las estaciones que coinciden en ambas tablas.</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># Opci\u00f3n A: Uni\u00f3n completa (Recomendada para no perder registros)</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>datos_completos <span class="ot">&lt;-</span> datos_diarios_unificados <span class="sc">|&gt;</span> </span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="fu">full_join</span>(metadatos, <span class="at">by =</span> <span class="st">"id"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co"># Opci\u00f3n B: Uni\u00f3n interna (Ideal si quer\u00e9s trabajar con un volumen menor y filtrar datos hu\u00e9rfanos)</span></span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> datos_diarios_unificados <span class="sc">|&gt;</span> </span>
-<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>  <span class="fu">inner_join</span>(metadatos, <span class="at">by =</span> <span class="st">"id"</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  <span class="st">```</span></span></code></pre></div>
+<p>Si querés trabajar de forma conjunta con los datos diarios de distintas estaciones y enriquecerlos con la información descriptiva, podés combinar los datasets que comparten estructura con <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind()</a></code> y luego cruzarlos con los metadatos:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co"># 1. Apilar los datasets diarios de las estaciones</span></span>
+<span><span class="va">datos_diarios_unificados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">estacion_472</span>, <span class="va">estacion_910</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Combinar con los metadatos</span></span>
+<span><span class="co"># - full_join(): Conserva absolutamente todo (ninguna estación se pierde).</span></span>
+<span><span class="co"># - inner_join(): Filtra estrictamente y se queda solo con las estaciones que coinciden en ambas tablas.</span></span>
+<span></span>
+<span><span class="co"># Opción A: Unión completa (Recomendada para no perder registros)</span></span>
+<span><span class="va">datos_completos</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">full_join</a></span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Opción B: Unión interna (Ideal si querés trabajar con un volumen menor y filtrar datos huérfanos)</span></span>
+<span><span class="va">datos_filtrados</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

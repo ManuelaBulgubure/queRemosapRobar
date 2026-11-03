@@ -184,7 +184,7 @@ sin perder información.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Conserva todas las filas y metadatos disponibles</span></span>
 <span><span class="va">datos_completos</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">full_join</span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">full_join</a></span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <p>Opción B: Unión interna con inner_join() (Filtrado de volumen)
 Retiene únicamente las filas cuyas estaciones estén presentes de forma
 simultánea en ambas tablas. Es una excelente opción cuando se busca
@@ -193,7 +193,7 @@ sin mediciones válidas.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Retiene únicamente las coincidencias exactas entre tablas</span></span>
 <span><span class="va">datos_filtrados</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
