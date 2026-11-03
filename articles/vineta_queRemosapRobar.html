@@ -75,6 +75,8 @@ del paquete:</p>
 <li>
 <strong>Lectura e Importación de Datos</strong>
 (<code>lectura_datos</code>)</li>
+<li><strong>Datos incluidos en el paquete</strong></li>
+<li><strong>Integración y combinación de datasets</strong></li>
 <li>
 <strong>Conteo de Observaciones Válidas</strong>
 (<code>conteo_obs_temp</code>)</li>
@@ -106,17 +108,107 @@ directamente.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="datos-incluidos-en-el-paquete">Datos incluidos en el paquete<a class="anchor" aria-label="anchor" href="#datos-incluidos-en-el-paquete"></a>
+</h3>
+<p>El paquete <code>queRemosapRobar</code> incluye tres conjuntos de
+datos incorporados de forma nativa, listos para usar en cuanto se carga
+la librería con <code><a href="https://github.com/ManuelaBulgubure/queRemosapRobar" class="external-link">library(queRemosapRobar)</a></code>:</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Objeto</th>
+<th align="left">Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>metadatos</code></td>
+<td align="left">Información descriptiva de 258 estaciones
+meteorológicas: nombre, tipo, localidad, provincia, coordenadas, altura
+y período de registro (11 variables).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>estacion_472</code></td>
+<td align="left">Registros diarios de la estación NH0472: temperaturas,
+humedad, viento, precipitaciones, radiación y otras variables
+agrometeorológicas (35 variables).</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>estacion_910</code></td>
+<td align="left">Registros diarios de la estación NH0910, con las mismas
+35 variables que <code>estacion_472</code>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Para consultar la documentación detallada y la estructura de cada
+variable, podés ejecutar en la consola <code><a href="../reference/metadatos.html">?metadatos</a></code>,
+<code><a href="../reference/estacion_472.html">?estacion_472</a></code> o <code><a href="../reference/estacion_910.html">?estacion_910</a></code>.</p>
+</blockquote>
+<hr>
+</div>
+<div class="section level3">
+<h3 id="integración-y-combinación-de-datasets">Integración y combinación de datasets<a class="anchor" aria-label="anchor" href="#integraci%C3%B3n-y-combinaci%C3%B3n-de-datasets"></a>
+</h3>
+<p>Un caso de uso habitual en análisis meteorológico consiste en
+unificar los registros diarios provenientes de distintas estaciones de
+medición y cruzarlos posteriormente con la tabla descriptiva de
+<code>metadatos</code>.</p>
+</div>
+<div class="section level3">
+<h3 id="apilar-mediciones-con-rbind">1. Apilar mediciones con <code>rbind()</code><a class="anchor" aria-label="anchor" href="#apilar-mediciones-con-rbind"></a>
+</h3>
+<p>Como <code>estacion_472</code> y <code>estacion_910</code> comparten
+exactamente la misma estructura de 35 columnas, podemos combinarlas
+verticalmente de forma limpia y eficiente utilizando
+<code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind()</a></code> de R base:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Apilamos los registros diarios de ambas estaciones</span></span>
+<span><span class="va">datos_diarios_unificados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">estacion_472</span>, <span class="va">estacion_910</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="cruzar-con-metadatos-según-el-objetivo-del-análisis">2. Cruzar con metadatos según el objetivo del análisis<a class="anchor" aria-label="anchor" href="#cruzar-con-metadatos-seg%C3%BAn-el-objetivo-del-an%C3%A1lisis"></a>
+</h3>
+<p>Una vez unificados los registros diarios, podemos enriquecer la
+información asociando los metadatos de cada estación mediante la columna
+común id. Según la estrategia de análisis, se pueden aplicar dos tipos
+de uniones:</p>
+<p>Opción A: Unión completa con full_join() (Recomendado) Conserva la
+totalidad de los registros de ambas tablas. Si una estación figura en
+los metadatos pero no posee registros diarios asociados (o viceversa),
+se mantendrá en el dataset resultante rellenando los campos vacíos con
+NA. Es la alternativa ideal para preservar la integridad de los datos
+sin perder información.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Conserva todas las filas y metadatos disponibles</span></span>
+<span><span class="va">datos_completos</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">full_join</span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
+<p>Opción B: Unión interna con inner_join() (Filtrado de volumen)
+Retiene únicamente las filas cuyas estaciones estén presentes de forma
+simultánea en ambas tablas. Es una excelente opción cuando se busca
+reducir el volumen de datos de trabajo o descartar registros huérfanos
+sin mediciones válidas.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Retiene únicamente las coincidencias exactas entre tablas</span></span>
+<span><span class="va">datos_filtrados</span> <span class="op">&lt;-</span> <span class="va">datos_diarios_unificados</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="va">metadatos</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
+<hr>
+</div>
+<div class="section level3">
 <h3 id="conteo-de-observaciones-válidas">Conteo de Observaciones Válidas<a class="anchor" aria-label="anchor" href="#conteo-de-observaciones-v%C3%A1lidas"></a>
 </h3>
 <p>Para verificar la calidad y disponibilidad de los datos registrados a
 distintas alturas o profundidades por cada estación, utilizamos la
 función <code><a href="../reference/conteo_obs_temp.html">conteo_obs_temp()</a></code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calcular el conteo de observaciones válidas</span></span>
 <span><span class="va">conteo_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conteo_obs_temp.html">conteo_obs_temp</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
 <span><span class="va">conteo_obs</span></span></code></pre></div>
+<hr>
 </div>
 <div class="section level3">
 <h3 id="resumen-estadístico-de-temperatura">Resumen Estadístico de Temperatura<a class="anchor" aria-label="anchor" href="#resumen-estad%C3%ADstico-de-temperatura"></a>
@@ -124,12 +216,13 @@ función <code><a href="../reference/conteo_obs_temp.html">conteo_obs_temp()</a>
 <p>Con la función <code><a href="../reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura()</a></code>, podemos
 obtener una tabla agrupada por estación (<code>id</code>) que calcula la
 temperatura promedio, mínima y máxima (a 150 cm de altura):</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo de tabla resumen</span></span>
 <span><span class="va">resumen_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
 <span><span class="va">resumen_temp</span></span></code></pre></div>
+<hr>
 </div>
 <div class="section level3">
 <h3 id="temperaturas-extremas-por-estación">Temperaturas Extremas por Estación<a class="anchor" aria-label="anchor" href="#temperaturas-extremas-por-estaci%C3%B3n"></a>
@@ -138,12 +231,13 @@ temperatura promedio, mínima y máxima (a 150 cm de altura):</p>
 identificar los valores mínimos y máximos absolutos registrados a
 diferentes alturas, facilitando la detección de eventos térmicos
 destacados:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo de temperaturas extremas</span></span>
 <span><span class="va">extremos_estacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extremos_temperatura_estacion.html">extremos_temperatura_estacion</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
 <span><span class="va">extremos_estacion</span></span></code></pre></div>
+<hr>
 </div>
 <div class="section level3">
 <h3 id="temperatura-promedio-anual">Temperatura Promedio Anual<a class="anchor" aria-label="anchor" href="#temperatura-promedio-anual"></a>
@@ -152,12 +246,13 @@ destacados:</p>
 temporal, podemos extraer los años a partir de las fechas y calcular la
 temperatura de abrigo promedio anual por estación mediante
 <code><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual()</a></code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo del promedio anual</span></span>
 <span><span class="va">promedio_anual</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
 <span><span class="va">promedio_anual</span></span></code></pre></div>
+<hr>
 </div>
 <div class="section level3">
 <h3 id="visualización-de-la-evolución-mensual">Visualización de la Evolución Mensual<a class="anchor" aria-label="anchor" href="#visualizaci%C3%B3n-de-la-evoluci%C3%B3n-mensual"></a>
@@ -166,7 +261,7 @@ temperatura de abrigo promedio anual por estación mediante
 del año, utilizamos <code><a href="../reference/grafico_temperatura_mensual.html">grafico_temperatura_mensual()</a></code>. Esta
 función genera un gráfico de líneas interactivo construido sobre
 <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Generar el gráfico mensual de la estación</span></span>
 <span></span>

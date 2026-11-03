@@ -8,12 +8,14 @@ provenientes de estaciones de medición. Esta viñeta muestra un flujo de
 trabajo básico utilizando las funciones principales del paquete:
 
 1.  **Lectura e Importación de Datos** (`lectura_datos`)
-2.  **Conteo de Observaciones Válidas** (`conteo_obs_temp`)
-3.  **Resumen Estadístico de Temperatura** (`tabla_resumen_temperatura`)
-4.  **Temperaturas Extremas por Estación**
+2.  **Datos incluidos en el paquete**
+3.  **Integración y combinación de datasets**
+4.  **Conteo de Observaciones Válidas** (`conteo_obs_temp`)
+5.  **Resumen Estadístico de Temperatura** (`tabla_resumen_temperatura`)
+6.  **Temperaturas Extremas por Estación**
     (`extremos_temperatura_estacion`)
-5.  **Temperatura Promedio Anual** (`temperatura_promedio_anual`)
-6.  **Visualización de la Evolución Mensual**
+7.  **Temperatura Promedio Anual** (`temperatura_promedio_anual`)
+8.  **Visualización de la Evolución Mensual**
     (`grafico_temperatura_mensual`)
 
 ### Lectura e Importación de Datos
@@ -33,6 +35,83 @@ datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 head(datos_clima)
 ```
 
+### Datos incluidos en el paquete
+
+El paquete `queRemosapRobar` incluye tres conjuntos de datos
+incorporados de forma nativa, listos para usar en cuanto se carga la
+librería con
+[`library(queRemosapRobar)`](https://github.com/ManuelaBulgubure/queRemosapRobar):
+
+| Objeto | Descripción |
+|:---|:---|
+| `metadatos` | Información descriptiva de 258 estaciones meteorológicas: nombre, tipo, localidad, provincia, coordenadas, altura y período de registro (11 variables). |
+| `estacion_472` | Registros diarios de la estación NH0472: temperaturas, humedad, viento, precipitaciones, radiación y otras variables agrometeorológicas (35 variables). |
+| `estacion_910` | Registros diarios de la estación NH0910, con las mismas 35 variables que `estacion_472`. |
+
+> Para consultar la documentación detallada y la estructura de cada
+> variable, podés ejecutar en la consola
+> [`?metadatos`](https://manuelabulgubure.github.io/queRemosapRobar/reference/metadatos.md),
+> [`?estacion_472`](https://manuelabulgubure.github.io/queRemosapRobar/reference/estacion_472.md)
+> o
+> [`?estacion_910`](https://manuelabulgubure.github.io/queRemosapRobar/reference/estacion_910.md).
+
+------------------------------------------------------------------------
+
+### Integración y combinación de datasets
+
+Un caso de uso habitual en análisis meteorológico consiste en unificar
+los registros diarios provenientes de distintas estaciones de medición y
+cruzarlos posteriormente con la tabla descriptiva de `metadatos`.
+
+### 1. Apilar mediciones con `rbind()`
+
+Como `estacion_472` y `estacion_910` comparten exactamente la misma
+estructura de 35 columnas, podemos combinarlas verticalmente de forma
+limpia y eficiente utilizando
+[`rbind()`](https://rdrr.io/r/base/cbind.html) de R base:
+
+``` r
+
+# Apilamos los registros diarios de ambas estaciones
+datos_diarios_unificados <- rbind(estacion_472, estacion_910)
+```
+
+### 2. Cruzar con metadatos según el objetivo del análisis
+
+Una vez unificados los registros diarios, podemos enriquecer la
+información asociando los metadatos de cada estación mediante la columna
+común id. Según la estrategia de análisis, se pueden aplicar dos tipos
+de uniones:
+
+Opción A: Unión completa con full_join() (Recomendado) Conserva la
+totalidad de los registros de ambas tablas. Si una estación figura en
+los metadatos pero no posee registros diarios asociados (o viceversa),
+se mantendrá en el dataset resultante rellenando los campos vacíos con
+NA. Es la alternativa ideal para preservar la integridad de los datos
+sin perder información.
+
+``` r
+
+# Conserva todas las filas y metadatos disponibles
+datos_completos <- datos_diarios_unificados |> 
+  full_join(metadatos, by = "id")
+```
+
+Opción B: Unión interna con inner_join() (Filtrado de volumen) Retiene
+únicamente las filas cuyas estaciones estén presentes de forma
+simultánea en ambas tablas. Es una excelente opción cuando se busca
+reducir el volumen de datos de trabajo o descartar registros huérfanos
+sin mediciones válidas.
+
+``` r
+
+# Retiene únicamente las coincidencias exactas entre tablas
+datos_filtrados <- datos_diarios_unificados |> 
+  inner_join(metadatos, by = "id")
+```
+
+------------------------------------------------------------------------
+
 ### Conteo de Observaciones Válidas
 
 Para verificar la calidad y disponibilidad de los datos registrados a
@@ -49,6 +128,8 @@ conteo_obs <- conteo_obs_temp(datos_clima)
 conteo_obs
 ```
 
+------------------------------------------------------------------------
+
 ### Resumen Estadístico de Temperatura
 
 Con la función
@@ -64,6 +145,8 @@ resumen_temp <- tabla_resumen_temperatura(datos_clima)
 # Mostrar el resultado
 resumen_temp
 ```
+
+------------------------------------------------------------------------
 
 ### Temperaturas Extremas por Estación
 
@@ -82,6 +165,8 @@ extremos_estacion <- extremos_temperatura_estacion(datos_clima)
 extremos_estacion
 ```
 
+------------------------------------------------------------------------
+
 ### Temperatura Promedio Anual
 
 Si nuestro objetivo es realizar un seguimiento a mayor escala temporal,
@@ -97,6 +182,8 @@ promedio_anual <- temperatura_promedio_anual(datos_clima)
 # Mostrar el resultado
 promedio_anual
 ```
+
+------------------------------------------------------------------------
 
 ### Visualización de la Evolución Mensual
 
