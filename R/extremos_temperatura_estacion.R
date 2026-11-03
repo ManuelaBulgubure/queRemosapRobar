@@ -1,7 +1,9 @@
 #' Calcular temperaturas extremas (mínimas y máximas) por estación
 #'
 #' Calcula las temperaturas mínimas y máximas registradas a distintas alturas
-#' o profundidades, agrupadas por el identificador de cada estación.
+#' o profundidades, agrupadas por el identificador de cada estación. Si una
+#' estación no tiene ningún valor válido en una variable, el resultado para esa
+#' variable es \code{NA}.
 #'
 #' @param datos Un \code{data.frame} con la columna
 #'   \code{id} y las variables de temperatura correspondientes.
@@ -12,7 +14,7 @@
 #'   \item{temp_minima_150cm}{Temperatura mínima a 150 cm}
 #'   \item{temp_maxima_150cm}{Temperatura máxima a 150 cm}
 #'   \item{temp_minima_50cm}{Temperatura mínima a 50 cm en intemperie}
-#'   \item{temp_minima_5cm}{Temperatura mínima a 5 cm}
+#'   \item{temp_minima_5cm}{Temperatura mínima a 5 cm en intemperie}
 #'
 #'
 #' @export
@@ -28,10 +30,10 @@ extremos_temperatura_estacion <- function(datos) {
   resumen_extremos <- datos |>
     dplyr::group_by(id) |>
     dplyr::summarise(
-      temp_minima_150cm = min(temperatura_abrigo_150cm_minima, na.rm = TRUE),
-      temp_maxima_150cm = max(temperatura_abrigo_150cm_maxima, na.rm = TRUE),
-      temp_minima_50cm  = min(temperatura_intemperie_50cm_minima, na.rm = TRUE),
-      temp_minima_5cm   = min(temperatura_inte_5cm, na.rm = TRUE)
+      temp_minima_150cm = minimo_seguro(temperatura_abrigo_150cm_minima),
+      temp_maxima_150cm = maximo_seguro(temperatura_abrigo_150cm_maxima),
+      temp_minima_50cm  = minimo_seguro(temperatura_intemperie_50cm_minima),
+      temp_minima_5cm   = minimo_seguro(temperatura_intemperie_5cm_minima)
     )
 
   return(resumen_extremos)
