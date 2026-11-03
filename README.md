@@ -161,31 +161,30 @@ head(estacion_472)
 Para ver el detalle de cada variable, consultá `?metadatos`,
 `?estacion_472` o `?estacion_910`.
 
-### Ejemplo r0e1pido de integraci0f3n de datos
+### Ejemplo rápido de integración de datos
 
-Si quer0e9s trabajar de forma conjunta con los datos diarios de
-distintas estaciones y enriquecerlos con la informaci0f3n descriptiva,
-pod0e9s combinar los datasets que comparten estructura con `rbind()` y
-luego cruzarlos con los metadatos:
+Si querés trabajar de forma conjunta con los datos diarios de distintas
+estaciones y enriquecerlos con la información descriptiva, podés
+combinar los datasets que comparten estructura con `rbind()` y luego
+cruzarlos con los metadatos:
 
-```` r
+``` r
 library(dplyr)
 # 1. Apilar los datasets diarios de las estaciones
 datos_diarios_unificados <- rbind(estacion_472, estacion_910)
 
 # 2. Combinar con los metadatos
-# - full_join(): Conserva absolutamente todo (ninguna estaci\u00f3n se pierde).
+# - full_join(): Conserva absolutamente todo (ninguna estación se pierde).
 # - inner_join(): Filtra estrictamente y se queda solo con las estaciones que coinciden en ambas tablas.
 
-# Opci\u00f3n A: Uni\u00f3n completa (Recomendada para no perder registros)
+# Opción A: Unión completa (Recomendada para no perder registros)
 datos_completos <- datos_diarios_unificados |> 
   full_join(metadatos, by = "id")
 
-# Opci\u00f3n B: Uni\u00f3n interna (Ideal si quer\u00e9s trabajar con un volumen menor y filtrar datos hu\u00e9rfanos)
+# Opción B: Unión interna (Ideal si querés trabajar con un volumen menor y filtrar datos huérfanos)
 datos_filtrados <- datos_diarios_unificados |> 
   inner_join(metadatos, by = "id")
-  ```
-````
+```
 
 ## Viñeta de introducción
 
