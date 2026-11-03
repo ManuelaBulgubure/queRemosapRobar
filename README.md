@@ -178,11 +178,11 @@ datos_diarios_unificados <- rbind(estacion_472, estacion_910)
 # - inner_join(): Filtra estrictamente y se queda solo con las estaciones que coinciden en ambas tablas.
 
 # Opci\u00f3n A: Uni\u00f3n completa (Recomendada para no perder registros)
-datos_completos <- datos_diarios_unificados %>%
+datos_completos <- datos_diarios_unificados |> 
   full_join(metadatos, by = "id")
 
 # Opci\u00f3n B: Uni\u00f3n interna (Ideal si quer\u00e9s trabajar con un volumen menor y filtrar datos hu\u00e9rfanos)
-datos_filtrados <- datos_diarios_unificados %>%
+datos_filtrados <- datos_diarios_unificados |> 
   inner_join(metadatos, by = "id")
   ```
 ````
