@@ -1,6 +1,8 @@
 #' Tabla resumen temperatura por estación
 #'
-#' Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada estación
+#' Calcula la temperatura promedio, mínima y máxima (a 150cm) de cada estación.
+#' Si una estación no tiene ningún valor válido, la mínima y la máxima se
+#' devuelven como \code{NA}.
 #'
 #' @param datos Un dataframe que contenga al menos las columnas "id" y "temperatura_abrigo_150cm"
 #'
@@ -25,8 +27,8 @@ tabla_resumen_temperatura <- function(datos){
     dplyr::group_by(id) |>
     dplyr::summarise(
       temp_promedio = mean(temperatura_abrigo_150cm, na.rm = TRUE),
-      temp_minima = min(temperatura_abrigo_150cm, na.rm = TRUE),
-      temp_maxima = max(temperatura_abrigo_150cm, na.rm = TRUE)
+      temp_minima = minimo_seguro(temperatura_abrigo_150cm),
+      temp_maxima = maximo_seguro(temperatura_abrigo_150cm)
     )
   return(resumen)
 }
