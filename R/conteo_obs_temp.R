@@ -10,7 +10,7 @@
 #' siguientes columnas calculadas:
 #'   \item{id}{Identificador de la estación}
 #'   \item{temp_150cm}{Cantidad de observaciones válidas a 150 cm}
-#'   \item{temp_5cm}{Cantidad de observaciones válidas a 5 cm}
+#'   \item{temp_5cm}{Cantidad de observaciones válidas de la temperatura mínima a 5 cm en intemperie}
 #'   \item{temp_10cm_media}{Cantidad de observaciones válidas a 10 cm de profundidad}
 #'
 #' @export
@@ -27,7 +27,7 @@ conteo_obs_temp <- function(datos){
     dplyr::group_by(id) |>
     dplyr::summarise(
       temp_150cm = sum(!is.na(temperatura_abrigo_150cm)),
-      temp_5cm = sum(!is.na(temperatura_inte_5cm)),
+      temp_5cm = sum(!is.na(temperatura_intemperie_5cm_minima)),
       temp_10cm_media = sum(!is.na(temperatura_suelo_10cm_media))
     )
   return(resumen_conteo)
