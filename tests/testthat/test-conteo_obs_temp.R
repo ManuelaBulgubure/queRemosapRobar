@@ -7,7 +7,7 @@ test_that("conteo_obs_temp() calcula correctamente los valores no nulos por id",
   datos_prueba1 <- data.frame(
     id = c("Estacion_1", "Estacion_2", "Estacion_3"),
     temperatura_abrigo_150cm = c(20.5, NA, 22.1),
-    temperatura_inte_5cm = c(NA, 18.2, 19.0),
+    temperatura_intemperie_5cm_minima = c(NA, 18.2, 19.0),
     temperatura_suelo_10cm_media = c(15.0, 14.5, NA)
   )
 
@@ -40,7 +40,7 @@ test_that("conteo_obs_temp() devuelve un data frame", {
   datos_prueba2 <- data.frame(
     id = "Estacion_x",
     temperatura_abrigo_150cm = 20.8,
-    temperatura_inte_5cm = 18.1,
+    temperatura_intemperie_5cm_minima = 18.1,
     temperatura_suelo_10cm_media = 14.0
   )
 
@@ -52,7 +52,7 @@ test_that("el dataframe que devuelve conteo_obs_temp() tiene las columnas espera
   datos_prueba3 <- data.frame(
     id = "Estacion_y",
     temperatura_abrigo_150cm = 11.2,
-    temperatura_inte_5cm = 9.0,
+    temperatura_intemperie_5cm_minima = 9.0,
     temperatura_suelo_10cm_media = 13.4
   )
   resultado3 <- conteo_obs_temp(datos_prueba3)
