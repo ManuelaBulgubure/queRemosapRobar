@@ -36,7 +36,7 @@ Esta viñeta muestra un flujo de trabajo básico utilizando las funciones princi
 8. **Visualización de la Evolución Mensual** (`grafico_temperatura_mensual`)
 
 ### Lectura e Importación de Datos
-La función `lectura_datos()` permite descargar e importar un archivo CSV con mediciones climáticas a partir del identificador de la estación. Si el archivo ya existe en tu equipo local, lo lee directamente.
+La función `lectura_datos()` permite descargar e importar un archivo CSV con mediciones climáticas a partir del identificador de la estación. Si el archivo ya existe en tu equipo local, lo lee directamente. Este ejemplo no se ejecuta al construir la viñeta porque requiere conexión a internet; el resto del flujo usa los datos que ya vienen incluidos en el paquete (`estacion_472` y `estacion_910`).
 
 ```{r lectura, eval = FALSE}
 # Ejemplo de lectura para la estación "NH0437"
@@ -68,7 +68,7 @@ Un caso de uso habitual en análisis meteorológico consiste en unificar los reg
 
 Como `estacion_472` y `estacion_910` comparten exactamente la misma estructura de 35 columnas, podemos combinarlas verticalmente de forma limpia y eficiente utilizando `rbind()` de R base:
 
-```{r, eval = FALSE}
+```{r}
 # Apilamos los registros diarios de ambas estaciones
 datos_diarios_unificados <- rbind(estacion_472, estacion_910)
 ```
@@ -79,7 +79,7 @@ Una vez unificados los registros diarios, podemos enriquecer la información aso
 Opción A: Unión completa con full_join() (Recomendado)
 Conserva la totalidad de los registros de ambas tablas. Si una estación figura en los metadatos pero no posee registros diarios asociados (o viceversa), se mantendrá en el dataset resultante rellenando los campos vacíos con NA. Es la alternativa ideal para preservar la integridad de los datos sin perder información.
 
-```{r, eval = FALSE}
+```{r}
 # Conserva todas las filas y metadatos disponibles
 datos_completos <- datos_diarios_unificados |> 
   full_join(metadatos, by = "id")
@@ -88,7 +88,7 @@ datos_completos <- datos_diarios_unificados |>
 Opción B: Unión interna con inner_join() (Filtrado de volumen)
 Retiene únicamente las filas cuyas estaciones estén presentes de forma simultánea en ambas tablas. Es una excelente opción cuando se busca reducir el volumen de datos de trabajo o descartar registros huérfanos sin mediciones válidas.
 
-```{r, eval = FALSE}
+```{r}
 # Retiene únicamente las coincidencias exactas entre tablas
 datos_filtrados <- datos_diarios_unificados |> 
   inner_join(metadatos, by = "id")
@@ -99,9 +99,9 @@ datos_filtrados <- datos_diarios_unificados |>
 ### Conteo de Observaciones Válidas
 Para verificar la calidad y disponibilidad de los datos registrados a distintas alturas o profundidades por cada estación, utilizamos la función `conteo_obs_temp()`:
 
-```{r conteo, eval = FALSE}
+```{r conteo}
 # Calcular el conteo de observaciones válidas
-conteo_obs <- conteo_obs_temp(datos_clima)
+conteo_obs <- conteo_obs_temp(datos_diarios_unificados)
 
 # Mostrar el resultado
 conteo_obs
@@ -112,9 +112,9 @@ conteo_obs
 ### Resumen Estadístico de Temperatura
 Con la función `tabla_resumen_temperatura()`, podemos obtener una tabla agrupada por estación (`id`) que calcula la temperatura promedio, mínima y máxima (a 150 cm de altura):
 
-```{r resumen, eval = FALSE}
+```{r resumen}
 # Cálculo de tabla resumen
-resumen_temp <- tabla_resumen_temperatura(datos_clima)
+resumen_temp <- tabla_resumen_temperatura(datos_diarios_unificados)
 
 # Mostrar el resultado
 resumen_temp
@@ -125,9 +125,9 @@ resumen_temp
 ### Temperaturas Extremas por Estación
 La función `extremos_temperatura_estacion()` permite identificar los valores mínimos y máximos absolutos registrados a diferentes alturas, facilitando la detección de eventos térmicos destacados:
 
-```{r, eval = FALSE}
+```{r}
 # Cálculo de temperaturas extremas
-extremos_estacion <- extremos_temperatura_estacion(datos_clima)
+extremos_estacion <- extremos_temperatura_estacion(datos_diarios_unificados)
 
 # Mostrar el resultado
 extremos_estacion
@@ -138,9 +138,9 @@ extremos_estacion
 ### Temperatura Promedio Anual
 Si nuestro objetivo es realizar un seguimiento a mayor escala temporal, podemos extraer los años a partir de las fechas y calcular la temperatura de abrigo promedio anual por estación mediante `temperatura_promedio_anual()`:
 
-```{r, eval = FALSE}
+```{r}
 # Cálculo del promedio anual
-promedio_anual <- temperatura_promedio_anual(datos_clima)
+promedio_anual <- temperatura_promedio_anual(datos_diarios_unificados)
 
 # Mostrar el resultado
 promedio_anual
@@ -152,13 +152,14 @@ promedio_anual
 Para analizar el comportamiento temporal de la temperatura a lo largo del año, utilizamos `grafico_temperatura_mensual()`. 
 Esta función genera un gráfico de líneas construido sobre `ggplot2`.
 
-```{r grafico, eval = FALSE}
+```{r grafico}
 
 # Generar el gráfico mensual de la estación
 
 grafico_temperatura_mensual(
-  data_frame = datos_clima, 
-  titulo = "Evolución Mensual de Temperatura - Estación NH0437"
+  data_frame = datos_diarios_unificados, 
+  colores = c("steelblue", "tomato"),
+  titulo = "Evolución mensual de la temperatura - Estaciones NH0472 y NH0910"
 )
 ```
 
