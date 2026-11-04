@@ -99,7 +99,10 @@ del paquete:</p>
 <p>La función <code><a href="../reference/lectura_datos.html">lectura_datos()</a></code> permite descargar e importar
 un archivo CSV con mediciones climáticas a partir del identificador de
 la estación. Si el archivo ya existe en tu equipo local, lo lee
-directamente.</p>
+directamente. Este ejemplo no se ejecuta al construir la viñeta porque
+requiere conexión a internet; el resto del flujo usa los datos que ya
+vienen incluidos en el paquete (<code>estacion_472</code> y
+<code>estacion_910</code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Ejemplo de lectura para la estación "NH0437"</span></span>
 <span><span class="va">datos_clima</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lectura_datos.html">lectura_datos</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"NH0437"</span>, ruta <span class="op">=</span> <span class="st">"NH0437.csv"</span><span class="op">)</span></span>
@@ -204,10 +207,15 @@ distintas alturas o profundidades por cada estación, utilizamos la
 función <code><a href="../reference/conteo_obs_temp.html">conteo_obs_temp()</a></code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calcular el conteo de observaciones válidas</span></span>
-<span><span class="va">conteo_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conteo_obs_temp.html">conteo_obs_temp</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span><span class="va">conteo_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conteo_obs_temp.html">conteo_obs_temp</a></span><span class="op">(</span><span class="va">datos_diarios_unificados</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
-<span><span class="va">conteo_obs</span></span></code></pre></div>
+<span><span class="va">conteo_obs</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
+<span><span class="co">#&gt;   id     temp_150cm temp_5cm temp_10cm_media</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> NH0472      <span style="text-decoration: underline;">20</span>359    <span style="text-decoration: underline;">15</span>504               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> NH0910      <span style="text-decoration: underline;">15</span>506        0               0</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
@@ -218,10 +226,15 @@ obtener una tabla agrupada por estación (<code>id</code>) que calcula la
 temperatura promedio, mínima y máxima (a 150 cm de altura):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo de tabla resumen</span></span>
-<span><span class="va">resumen_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span><span class="va">resumen_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tabla_resumen_temperatura.html">tabla_resumen_temperatura</a></span><span class="op">(</span><span class="va">datos_diarios_unificados</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
-<span><span class="va">resumen_temp</span></span></code></pre></div>
+<span><span class="va">resumen_temp</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
+<span><span class="co">#&gt;   id     temp_promedio temp_minima temp_maxima</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> NH0472          18.0        0.55        34.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> NH0910          17.7        0           35.2</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
@@ -233,10 +246,15 @@ diferentes alturas, facilitando la detección de eventos térmicos
 destacados:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo de temperaturas extremas</span></span>
-<span><span class="va">extremos_estacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extremos_temperatura_estacion.html">extremos_temperatura_estacion</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span><span class="va">extremos_estacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extremos_temperatura_estacion.html">extremos_temperatura_estacion</a></span><span class="op">(</span><span class="va">datos_diarios_unificados</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
-<span><span class="va">extremos_estacion</span></span></code></pre></div>
+<span><span class="va">extremos_estacion</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 5</span></span></span>
+<span><span class="co">#&gt;   id     temp_minima_150cm temp_maxima_150cm temp_minima_50cm temp_minima_5cm</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> NH0472              -<span style="color: #BB0000;">8</span>                42.1               -<span style="color: #BB0000;">8</span>           -<span style="color: #BB0000;">13.6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> NH0910              -<span style="color: #BB0000;">8.5</span>              43                 <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
@@ -248,10 +266,24 @@ temperatura de abrigo promedio anual por estación mediante
 <code><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual()</a></code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cálculo del promedio anual</span></span>
-<span><span class="va">promedio_anual</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual</a></span><span class="op">(</span><span class="va">datos_clima</span><span class="op">)</span></span>
+<span><span class="va">promedio_anual</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/temperatura_promedio_anual.html">temperatura_promedio_anual</a></span><span class="op">(</span><span class="va">datos_diarios_unificados</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mostrar el resultado</span></span>
-<span><span class="va">promedio_anual</span></span></code></pre></div>
+<span><span class="va">promedio_anual</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 100 × 3</span></span></span>
+<span><span class="co">#&gt;    id      anio temp_promedio</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> NH0472  <span style="text-decoration: underline;">1</span>961          17.0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> NH0472  <span style="text-decoration: underline;">1</span>962          17.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> NH0472  <span style="text-decoration: underline;">1</span>963          17.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> NH0472  <span style="text-decoration: underline;">1</span>964          17.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> NH0472  <span style="text-decoration: underline;">1</span>965          17.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> NH0472  <span style="text-decoration: underline;">1</span>966          17.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> NH0472  <span style="text-decoration: underline;">1</span>967          17.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> NH0472  <span style="text-decoration: underline;">1</span>968          17.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> NH0472  <span style="text-decoration: underline;">1</span>969          18.0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> NH0472  <span style="text-decoration: underline;">1</span>970          17.8</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 90 more rows</span></span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
@@ -266,9 +298,11 @@ función genera un gráfico de líneas construido sobre
 <span><span class="co"># Generar el gráfico mensual de la estación</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/grafico_temperatura_mensual.html">grafico_temperatura_mensual</a></span><span class="op">(</span></span>
-<span>  data_frame <span class="op">=</span> <span class="va">datos_clima</span>, </span>
-<span>  titulo <span class="op">=</span> <span class="st">"Evolución Mensual de Temperatura - Estación NH0437"</span></span>
+<span>  data_frame <span class="op">=</span> <span class="va">datos_diarios_unificados</span>, </span>
+<span>  colores <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"steelblue"</span>, <span class="st">"tomato"</span><span class="op">)</span>,</span>
+<span>  titulo <span class="op">=</span> <span class="st">"Evolución mensual de la temperatura - Estaciones NH0472 y NH0910"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p><img src="vineta_queRemosapRobar_files/figure-html/grafico-1.png" class="r-plt" alt="" width="700"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

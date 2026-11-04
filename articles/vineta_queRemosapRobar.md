@@ -24,7 +24,10 @@ La función
 [`lectura_datos()`](https://manuelabulgubure.github.io/queRemosapRobar/reference/lectura_datos.md)
 permite descargar e importar un archivo CSV con mediciones climáticas a
 partir del identificador de la estación. Si el archivo ya existe en tu
-equipo local, lo lee directamente.
+equipo local, lo lee directamente. Este ejemplo no se ejecuta al
+construir la viñeta porque requiere conexión a internet; el resto del
+flujo usa los datos que ya vienen incluidos en el paquete
+(`estacion_472` y `estacion_910`).
 
 ``` r
 
@@ -122,10 +125,15 @@ función
 ``` r
 
 # Calcular el conteo de observaciones válidas
-conteo_obs <- conteo_obs_temp(datos_clima)
+conteo_obs <- conteo_obs_temp(datos_diarios_unificados)
 
 # Mostrar el resultado
 conteo_obs
+#> # A tibble: 2 × 4
+#>   id     temp_150cm temp_5cm temp_10cm_media
+#>   <chr>       <int>    <int>           <int>
+#> 1 NH0472      20359    15504               0
+#> 2 NH0910      15506        0               0
 ```
 
 ------------------------------------------------------------------------
@@ -140,10 +148,15 @@ temperatura promedio, mínima y máxima (a 150 cm de altura):
 ``` r
 
 # Cálculo de tabla resumen
-resumen_temp <- tabla_resumen_temperatura(datos_clima)
+resumen_temp <- tabla_resumen_temperatura(datos_diarios_unificados)
 
 # Mostrar el resultado
 resumen_temp
+#> # A tibble: 2 × 4
+#>   id     temp_promedio temp_minima temp_maxima
+#>   <chr>          <dbl>       <dbl>       <dbl>
+#> 1 NH0472          18.0        0.55        34.8
+#> 2 NH0910          17.7        0           35.2
 ```
 
 ------------------------------------------------------------------------
@@ -159,10 +172,15 @@ destacados:
 ``` r
 
 # Cálculo de temperaturas extremas
-extremos_estacion <- extremos_temperatura_estacion(datos_clima)
+extremos_estacion <- extremos_temperatura_estacion(datos_diarios_unificados)
 
 # Mostrar el resultado
 extremos_estacion
+#> # A tibble: 2 × 5
+#>   id     temp_minima_150cm temp_maxima_150cm temp_minima_50cm temp_minima_5cm
+#>   <chr>              <dbl>             <dbl>            <dbl>           <dbl>
+#> 1 NH0472              -8                42.1               -8           -13.6
+#> 2 NH0910              -8.5              43                 NA            NA
 ```
 
 ------------------------------------------------------------------------
@@ -177,10 +195,24 @@ temperatura de abrigo promedio anual por estación mediante
 ``` r
 
 # Cálculo del promedio anual
-promedio_anual <- temperatura_promedio_anual(datos_clima)
+promedio_anual <- temperatura_promedio_anual(datos_diarios_unificados)
 
 # Mostrar el resultado
 promedio_anual
+#> # A tibble: 100 × 3
+#>    id      anio temp_promedio
+#>    <chr>  <dbl>         <dbl>
+#>  1 NH0472  1961          17.0
+#>  2 NH0472  1962          17.1
+#>  3 NH0472  1963          17.8
+#>  4 NH0472  1964          17.5
+#>  5 NH0472  1965          17.3
+#>  6 NH0472  1966          17.1
+#>  7 NH0472  1967          17.5
+#>  8 NH0472  1968          17.8
+#>  9 NH0472  1969          18.0
+#> 10 NH0472  1970          17.8
+#> # ℹ 90 more rows
 ```
 
 ------------------------------------------------------------------------
@@ -198,7 +230,10 @@ Esta función genera un gráfico de líneas construido sobre `ggplot2`.
 # Generar el gráfico mensual de la estación
 
 grafico_temperatura_mensual(
-  data_frame = datos_clima, 
-  titulo = "Evolución Mensual de Temperatura - Estación NH0437"
+  data_frame = datos_diarios_unificados, 
+  colores = c("steelblue", "tomato"),
+  titulo = "Evolución mensual de la temperatura - Estaciones NH0472 y NH0910"
 )
 ```
+
+![](vineta_queRemosapRobar_files/figure-html/grafico-1.png)
