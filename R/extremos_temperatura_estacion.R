@@ -28,10 +28,10 @@ extremos_temperatura_estacion <- function(datos) {
   resumen_extremos <- datos |>
     dplyr::group_by(id) |>
     dplyr::summarise(
-      temp_minima_150cm = min(temperatura_abrigo_150cm_minima, na.rm = TRUE),
-      temp_maxima_150cm = max(temperatura_abrigo_150cm_maxima, na.rm = TRUE),
-      temp_minima_50cm  = min(temperatura_intemperie_50cm_minima, na.rm = TRUE),
-      temp_minima_5cm   = min(temperatura_inte_5cm, na.rm = TRUE)
+      temp_minima_150cm = if (all(is.na(temperatura_abrigo_150cm_minima))) NA_real_ else min(temperatura_abrigo_150cm_minima, na.rm = TRUE),
+      temp_maxima_150cm = if (all(is.na(temperatura_abrigo_150cm_maxima))) NA_real_ else max(temperatura_abrigo_150cm_maxima, na.rm = TRUE),
+      temp_minima_50cm  = if (all(is.na(temperatura_intemperie_50cm_minima))) NA_real_ else min(temperatura_intemperie_50cm_minima, na.rm = TRUE),
+      temp_minima_5cm   = if (all(is.na(temperatura_inte_5cm))) NA_real_ else min(temperatura_inte_5cm, na.rm = TRUE)
     )
 
   return(resumen_extremos)
