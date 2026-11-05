@@ -43,7 +43,7 @@ grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Te
     ggplot2::labs(
       title = titulo,
       x = "Mes",
-      y = "Temperatura promedio (\u00b0C))",
+      y = "Temperatura promedio (\u00b0C)",
       color = "Estaci\u00f3n"
     )
 }
