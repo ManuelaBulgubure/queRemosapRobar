@@ -25,6 +25,6 @@ si éste no existe localmente en la ruta especificada y retorna un \code{tbl_df}
 }
 \examples{
 \dontrun{
-  datos_nh0437 <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
+  datos_nh0437 <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 }
 }

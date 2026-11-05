@@ -24,7 +24,7 @@ Graficar la temperatura promedio mensual por estación
 }
 \examples{
 \dontrun{
-  datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
+  datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
   grafico_temperatura_mensual(datos_clima, titulo = "Evolución Mensual NH0437")
 }
 }
