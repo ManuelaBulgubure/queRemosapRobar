@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'   datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
+#'   datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 #'   grafico_temperatura_mensual(datos_clima, titulo = "Evolución Mensual NH0437")
 #' }
 
@@ -43,7 +43,7 @@ grafico_temperatura_mensual <- function(data_frame, colores = NULL, titulo = "Te
     ggplot2::labs(
       title = titulo,
       x = "Mes",
-      y = "Promedio temperatura (grados (\u00b0C))",
+      y = "Temperatura promedio(grados (\u00b0C))",
       color = "Estaci\u00f3n"
     )
 }
