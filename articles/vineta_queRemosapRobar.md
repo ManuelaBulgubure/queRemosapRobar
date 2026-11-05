@@ -179,8 +179,8 @@ extremos_estacion
 #> # A tibble: 2 × 5
 #>   id     temp_minima_150cm temp_maxima_150cm temp_minima_50cm temp_minima_5cm
 #>   <chr>              <dbl>             <dbl>            <dbl>           <dbl>
-#> 1 NH0472              -8                42.1               -8              NA
-#> 2 NH0910              -8.5              43                 NA              NA
+#> 1 NH0472              -8                42.1               -8           -13.6
+#> 2 NH0910              -8.5              43                 NA            NA
 ```
 
 ------------------------------------------------------------------------
