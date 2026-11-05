@@ -33,6 +33,6 @@ Un dataframe con los datos de la estación indicada.
 
 ``` r
 if (FALSE) { # \dontrun{
-  datos_nh0437 <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
+  datos_nh0437 <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
 } # }
 ```

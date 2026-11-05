@@ -43,7 +43,7 @@ columnas calculadas:
 
 ``` r
 if (FALSE) { # \dontrun{
-  datos_clima <- lectura_datos(id =    "NH0437", ruta = "NH0437.csv")
+  datos_clima <- lectura_datos(id = "NH0437", ruta = "NH0437.csv")
   conteo <- conteo_obs_temp(datos_clima)
   print(conteo)
 } # }
